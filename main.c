@@ -19,8 +19,9 @@
 #include "dco.h"
 
 
-short Rsel;			/* DCO Resistor Selection 		*/
-volatile unsigned char Status;	/* Status flags				*/
+short Rsel;			    /* DCO Resistor Selection 		*/
+volatile unsigned char Status;	    /* Status flags			*/
+volatile unsigned int VZC_2delta;   /* DCO count over ACLK/8            */
 
 /* -----------------------------------------------------------------------
 Delay function.
@@ -84,7 +85,7 @@ void InitDCO( void )
 int main(void)
 {
     short i;
-    short task_state;
+    short adj_timer;
     
     /* Watchdog disabled */
     WDTCTL = WDTPW|WDTHOLD;
@@ -96,41 +97,18 @@ int main(void)
     InitDCO();
     InitIRQ();
 
-    /* Startup loop, 4 loops through */
-    for( i=0; i<4; i++ )
-    {
-      while( !(Status & TASK_OVR) )
-      {
-         asm("   nop");
-      }
-      Status &= ~TASK_OVR;
-    }
-    dco_step;
-
-    task_state = 0;
+    adj_timer = DCO_ADJ_TIME;
     while (1) {                         //main loop, never ends...
       if( Status & TASK_OVR )
       {
-        /* Execute 10mS tasks */
-        switch( task_state )
+        if( --adj_timer == 0 )
         {
-          case 0:
-              break;
-              
-          case 1:
-              break;
-              
-          case 2:
-              break;
-              
-          case 3:
-              dco_step();
-              
-              /* Diagnostic */
-              P1OUT ^= 1;
-              break;
+          dco_step();
+          adj_timer = DCO_ADJ_TIME;
+          
+          /* Diagnostic */
+          P1OUT ^= 1;
         }
-        task_state = (task_state + 1) % 4;
         Status &= ~TASK_OVR; 
       }
     }
