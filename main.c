@@ -86,6 +86,7 @@ void InitDCO( void )
 int main(void)
 {
     short i;
+    unsigned int success;
     short adj_timer;
     unsigned char sn[8];		/* 1-wire serial number 	*/
     
@@ -115,23 +116,28 @@ int main(void)
 
       if( !(P1IN & 0x02) )
       {
-        /* See if a device is connected */
-        for(i=0; i<5; i++)
+        success = 0;
+        for(i=0;(i<5) && !success;i++)
         {
           if( ow_reset() )
           {
+            /* Turn on the LED */
             P1OUT |= 0x01;
               
             /* Go Read the 1-wire serial number */
-//            ow_read_rom( sn );
+            ow_read_rom( sn );
+ 
+            /* Check checksum */
  
             /* Check against the access list */
               
               
             /* Unlock the lock */
-              
+            
+            
+            success = 1;
           } /* presence */
-        } /* loop */
+        } /* for loop */
       }
     }
 }

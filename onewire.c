@@ -61,3 +61,120 @@ int ow_reset( void )
 
 
 
+/* -----------------------------------------------------------------------
+   Write a 1-wire byte
+   ----------------------------------------------------------------------- */
+void ow_write( unsigned char d )
+{
+  unsigned int i;
+  
+  /* Output a 1 */
+  _DINT();
+  P1OUT |= 0x02;
+  P1DIR |= 0x02;
+  
+  for(i=0;i<8;i++)
+  {
+    if( d & 0x01 )
+    {
+      /* Write a 1 -- pull low for ~8uS (must be 1-15uS) */
+      P1OUT &= ~0x02;
+      asm("  nop");
+      asm("  nop");
+      asm("  nop");			/* About 8uS       	*/
+      P1OUT |= 0x02;                    /* Keep it high		*/
+      ow_delay( D100US );
+    } else {
+      /* Write a 0 */
+      P1OUT &= ~0x02;
+      ow_delay( D100US );
+      P1OUT |= 0x02;      
+      asm("  nop");
+      asm("  nop");
+    }
+    d = d >> 1;
+  }
+  
+  /* Let pullup pull data line high */
+  P1DIR &= ~0x02;
+
+  _EINT();
+}
+
+
+/* -----------------------------------------------------------------------
+   Read a 1-wire byte
+   ----------------------------------------------------------------------- */
+unsigned char ow_read()
+{
+  unsigned char d;
+  unsigned int i;
+  
+  _DINT();
+  P1OUT |= 0x02;
+  P1DIR |= 0x02;
+  
+  d = 0;
+  for(i=0;i<8;i++)
+  {
+    P1OUT &= ~0x02;			/* Pull ow line low	*/
+    P1DIR |= 0x02;
+    asm("  nop");
+    asm("  nop");
+    asm("  nop");			/* About 8uS       	*/
+    P1DIR &= ~0x02;			/* Let pullup pull	*/      
+  
+    /* Delay for 20uS before sampling */
+    ow_delay( 0 );
+    
+    d = d >> 1;
+    if( P1IN & 0x02 )
+    {
+      d = d | 0x80;
+    } else {
+      d = d & 0x7F;
+    }
+    
+    /* Delay to allow release */
+    ow_delay( 5 );
+  }
+    
+  _EINT();
+  return d;
+}
+
+
+/* -----------------------------------------------------------------------
+   Read the serial number from a device
+   ----------------------------------------------------------------------- */
+void ow_read_rom( unsigned char *sn )
+{
+  unsigned int i;
+
+
+#ifdef TEST_TIMING
+  while(1)
+  {
+    ow_read();
+    ow_delay(D500US);
+    ow_delay(D500US);
+    ow_delay(D500US);
+    ow_delay(D500US);    
+  }
+#endif
+  
+  if( ow_reset() == 1 )
+  {
+    /* Send the read ROM command */
+    ow_write( 0x33 );
+    
+    for(i=0;i<8;i++)
+    {
+      /* Read the serial number */
+      sn[i] = ow_read();
+    }
+    
+    ow_reset();
+  }
+}
+
