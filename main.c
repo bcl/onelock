@@ -3,6 +3,9 @@
    Copyright 2005 by Brian C. Lane
    All Rights Reserved
    ==========================[ HISTORY ]==================================
+   04/02/2005   Getting DCO adjustment working today.
+   bcl
+
    03/20/2005   Storm has knocked out the internet, so I'll get a head 
    bcl          start on my LFNW presentation.
    
@@ -12,8 +15,12 @@
    
    ----------------------------------------------------------------------- */
 #include "hardware.h"
+#include "interrupts.h"
+#include "dco.h"
 
 
+short Rsel;			/* DCO Resistor Selection 		*/
+volatile unsigned char Status;	/* Status flags				*/
 
 /* -----------------------------------------------------------------------
 Delay function.
@@ -42,35 +49,90 @@ void InitPorts( void )
 
 void InitOSC( void )
 {
-    /* Setup DCO for about 1MHz*/
-    /* ~1MHz Rsel=5 DCO=3 MOD=0 DCOR=0 */    
-    BCSCTL1 = 0x03;
+    /* Clear OSC Fault */
+    IE1 = 0x00;
+    IFG1 = 0x00;
     
+    /* Select DCO/1 as MCLK */
+    BCSCTL2 = 0x00;
 }
+
+void InitDCO( void )
+{
+    /* Setup the DCO frequency */
+    Rsel = RSEL_NOM;
+    Rsel_set( Rsel );
+    
+    /* Setup for ACLK/8 */
+    BCSCTL1 |= DIVA_DIV8;
+
+    /* Diagnostic */
+    /* Output SMCLK on P1.4 pin 16 f149 */
+    P1SEL |= 0x10;
+    P1DIR |= 0x10;
+    
+    /* Output ACLK on P2.0 pin 20 f149 */
+    P2SEL |= 0x01;
+    P2DIR |= 0x01;
+}
+
 
 
 /* -----------------------------------------------------------------------
    Main function with a blinking LED
    ----------------------------------------------------------------------- */
-int main(void) {
-
+int main(void)
+{
+    short i;
+    short task_state;
+    
     /* Watchdog disabled */
     WDTCTL = WDTPW|WDTHOLD;
 
-  InitPorts();
-  InitOSC();
-  InitIRQ();
-    
-    
-    /* Initialize the interrupts */
-    P1IES  = P1IES_INIT;                //init port interrupts
-    P2IES  = P2IES_INIT;
-    P1IE   = P1IE_INIT;
-    P2IE   = P2IE_INIT;
+    Status = 0;
 
+    InitPorts();
+    InitOSC();
+    InitDCO();
+    InitIRQ();
+
+    /* Startup loop, 4 loops through */
+    for( i=0; i<4; i++ )
+    {
+      while( !(Status & TASK_OVR) )
+      {
+         asm("   nop");
+      }
+      Status &= ~TASK_OVR;
+    }
+    dco_step;
+
+    task_state = 0;
     while (1) {                         //main loop, never ends...
-//       P1OUT ^= 1;
-//       delay(0x4fff);
+      if( Status & TASK_OVR )
+      {
+        /* Execute 10mS tasks */
+        switch( task_state )
+        {
+          case 0:
+              break;
+              
+          case 1:
+              break;
+              
+          case 2:
+              break;
+              
+          case 3:
+              dco_step();
+              
+              /* Diagnostic */
+              P1OUT ^= 1;
+              break;
+        }
+        task_state = (task_state + 1) % 4;
+        Status &= ~TASK_OVR; 
+      }
     }
 }
 

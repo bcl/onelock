@@ -4,7 +4,7 @@
 # REMINDER: msp430-gdb leds.elf
 
 NAME            = leds
-OBJECTS         = main.o interrupts.o
+OBJECTS         = main.o interrupts.o dco.o
 CPU             = msp430x149
 
 CFLAGS          = -mmcu=${CPU} -O2 -Wall -g
@@ -48,5 +48,8 @@ dist:
 FORCE:
 
 #project dependencies
-main.o: main.c hardware.h Makefile
-interrupts.o: hardware.h Makefile
+main.o: main.c dco.h interrupts.h hardware.h Makefile
+interrupts.o: hardware.h interrupts.h Makefile
+dco.o: dco.h hardware.h Makefile
+
+

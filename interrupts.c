@@ -4,36 +4,44 @@
    Copyright 2005 by Brian C. Lane
    All Rights Reserved   
    ==========================[ HISTORY ]==================================
+   04/02/2005   Changing to use the DCO adjustment method from slaa074.pdf
+   bcl          Run Timer A from the DCO
+                Connect 32.768Khz clock to CCI2B
+
    03/20/2005   Define default interrupt vectors for the F149
    bcl          
    
    
    ----------------------------------------------------------------------- */
 #include "hardware.h"
-
-#define T125_MS	4096
-#define MIN_DCO_TIME 29687
-#define MAX_DCO_TIME 32812
+#include "interrupt.h"
+#include "dco.h"
 
 
-short last_tbr;
+extern volatile short Status;
+volatile unsigned int VZC_2delta;
+unsigned int VZC_LastCap;
+
 
 void InitIRQ( void )
 {
-  /* Setup Timer A0 run off ACLK /1, continuous up count, start */
-  TACTL = TASSEL_ACLK | TACLR;  
+  short i;
+  
+  /* Setup Timer A0 run off MCLK /1, continuous up count, start */
+  TACTL = TASSEL_SMCLK | TACLR;
   TACTL |= MC_CONT;
   
-  /* Setup Timer B0 to run off MCLK (DCO) /4 */
-  TBCTL = TBSSEL_SMCLK | TBCLR | ID_DIV4;
-  TBCTL |= MC_CONT;
-    
-  /* Setup an interrupt on TA0 for 125mS (4096 count) */
-  last_tbr = TBR;
-  CCR0 = TAR + T125_MS;
-  CCTL0 = CCIE;  
+  /* Setup CCR2 */
+  CCTL2 = CM_POS|CCIS_1|SCS|CAP|OUTMOD_SET;
 
-  /* Enable Interrupts */
+  /* Delay a bit for ACLK to settle */
+  for (i = 0; i<0x1000; i++)
+  {
+    nop();
+  }
+  /* Enable CCTL2 interrupt */
+  CCTL2 |= CCIE;
+
   _EINT();
 }
 
@@ -56,47 +64,24 @@ interrupt (PORT1_VECTOR) INT_port1( void )
 {
 } 
 
+/* -----------------------------------------------------------------------
+   Measure the 1/2 period of the 32.768KHz xtal
+   ----------------------------------------------------------------------- */
 interrupt (TIMERA1_VECTOR) INT_timera1( void )
 {
+  if( TAIV == 0x04 )
+  {
+    /* CCR2 Interrupt */
+    
+    /* Measure the 32.768KHz period */
+    VZC_2delta = CCR2 - VZC_LastCap;
+    VZC_LastCap = CCR2;
+    Status |= TASK_OVR;
+  }
 }
 
-/* -----------------------------------------------------------------------
-   Every 125mS adjust the DCO clock to tune it to the 32768Hz watch xtal
-   ----------------------------------------------------------------------- */
 interrupt (TIMERA0_VECTOR) INT_timera0( void )
 {
-  unsigned short t;
-  
-  /* Stop Timer B */
-  TBCTL = TBSSEL_SMCLK | ID_DIV4;
-  
-  t = TBR;
-  CCR0 += T125_MS;
-
-  /* Figure out how fast the DCO is running */
-  if( t < MIN_DCO_TIME )
-  {
-    /* The DCO is running too slow */
-    if( DCOCTL < 0xFF )
-    {
-      DCOCTL += 1;
-    }
-  } else if( t > MAX_DCO_TIME ) {
-    /* The DCO is running too fast */
-    if( DCOCTL > 0 )
-    {
-      DCOCTL -= 1;
-    }
-  } else {
-    asm("  nop");
-  }
-
-  /* Clear and restart Timer B */
-  TBCTL |= TBCLR;
-  TBCTL |= MC_CONT;
-
-  /* Diagnostic */
-  P1OUT ^= 1;
 }
 
 interrupt (ADC_VECTOR) INT_adc( void )
