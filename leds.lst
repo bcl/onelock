@@ -240,17 +240,17 @@ SYMBOL TABLE:
 0000013a l       *ABS*	00000000 __RESLO
 0000013c l       *ABS*	00000000 __RESHI
 0000013e l       *ABS*	00000000 __SUMEXT
-00001384 l       .text	00000000 Letext
+00001388 l       .text	00000000 Letext
 00000000 l    df *ABS*	00000000 <command line>
 00000000 l    df *ABS*	00000000 <built-in>
-00001388 l       .text	00000000 __stop_progLoop
+0000138c l       .text	00000000 __stop_progLoop
 00001120  w      .text	00000000 _clear_bss_init__
 00000200 g     O .bss	00000002 VZC_2delta
-00001348 g     F .text	0000003c ow_reset
+00001348 g     F .text	00000040 ow_reset
 000012ac g     F .text	00000002 INT_nmi
-0000138c g       .text	00000000 _etext
+00001390 g       .text	00000000 _etext
 00001276 g     F .text	00000002 INT_uart1rx
-00001384 g       .text	00000000 __stop_progExec__
+00001388 g       .text	00000000 __stop_progExec__
 0000113a g       .text	00000000 _unexpected_1_
 0000113a  w      .text	00000000 vector_ffe0
 0000117c g     F .text	00000026 InitDCO
@@ -316,7 +316,7 @@ Disassembly of section .text:
     1104:	20 01 
 
 00001106 <_copy_data_init__>:
-    1106:	3f 40 8c 13 	mov	#5004,	r15	;#0x138c
+    1106:	3f 40 90 13 	mov	#5008,	r15	;#0x1390
     110a:	3e 40 00 02 	mov	#512,	r14	;#0x0200
     110e:	3d 40 00 02 	mov	#512,	r13	;#0x0200
     1112:	0d 9e       	cmp	r14,	r13	;
@@ -532,7 +532,7 @@ int main(void)
     }
 }
     1206:	31 52       	add	#8,	r1	;r2 As==11
-    1208:	30 40 84 13 	br	#0x1384		;
+    1208:	30 40 88 13 	br	#0x1388		;
 
 0000120c <InitIRQ>:
 {
@@ -854,54 +854,59 @@ int ow_reset( void )
     134a:	0a 12       	push	r10		;
   int status;
   
+
+  _DINT();
+    134c:	32 c2       	dint			
   /* Pull the 1-wire bus low for 500uS */
   P1OUT &= ~0x02;
-    134c:	e2 c3 21 00 	bic.b	#2,	&0x0021	;r3 As==10
+    134e:	e2 c3 21 00 	bic.b	#2,	&0x0021	;r3 As==10
   P1DIR |= 0x02;
-    1350:	e2 d3 22 00 	bis.b	#2,	&0x0022	;r3 As==10
+    1352:	e2 d3 22 00 	bis.b	#2,	&0x0022	;r3 As==10
   
   ow_delay( D500US );
-    1354:	3a 40 38 13 	mov	#4920,	r10	;#0x1338
-    1358:	3f 40 64 00 	mov	#100,	r15	;#0x0064
-    135c:	8a 12       	call	r10		;
+    1356:	3a 40 38 13 	mov	#4920,	r10	;#0x1338
+    135a:	3f 40 64 00 	mov	#100,	r15	;#0x0064
+    135e:	8a 12       	call	r10		;
   
   /* Allow resistor to pull it high */
   P1DIR &= ~0x02;
-    135e:	e2 c3 22 00 	bic.b	#2,	&0x0022	;r3 As==10
-  
+    1360:	e2 c3 22 00 	bic.b	#2,	&0x0022	;r3 As==10
+
   /* Delay 100uS before testing for presence */
   ow_delay( D100US );
-    1362:	3f 40 0a 00 	mov	#10,	r15	;#0x000a
-    1366:	8a 12       	call	r10		;
+    1364:	3f 40 10 00 	mov	#16,	r15	;#0x0010
+    1368:	8a 12       	call	r10		;
 
   /* Grab the status of the bus */  
   status =  !(P1IN & 0x02) ;
-    1368:	5f 42 20 00 	mov.b	&0x0020,r15	;0x0020
-    136c:	4b 4f       	mov.b	r15,	r11	;
-    136e:	12 c3       	clrc			
-    1370:	0b 10       	rrc	r11		;
-    1372:	1b e3       	xor	#1,	r11	;r3 As==01
-    1374:	1b f3       	and	#1,	r11	;r3 As==01
+    136a:	5f 42 20 00 	mov.b	&0x0020,r15	;0x0020
+    136e:	4b 4f       	mov.b	r15,	r11	;
+    1370:	12 c3       	clrc			
+    1372:	0b 10       	rrc	r11		;
+    1374:	1b e3       	xor	#1,	r11	;r3 As==01
+    1376:	1b f3       	and	#1,	r11	;r3 As==01
   
   /* Finish out the presence pulse time */
   ow_delay( D150US );
-    1376:	3f 40 0f 00 	mov	#15,	r15	;#0x000f
-    137a:	8a 12       	call	r10		;
+    1378:	3f 40 1a 00 	mov	#26,	r15	;#0x001a
+    137c:	8a 12       	call	r10		;
   
+  _EINT();
+    137e:	32 d2       	eint			
   return status;
 }
-    137c:	0f 4b       	mov	r11,	r15	;
-    137e:	3a 41       	pop	r10		;
-    1380:	3b 41       	pop	r11		;
-    1382:	30 41       	ret			
+    1380:	0f 4b       	mov	r11,	r15	;
+    1382:	3a 41       	pop	r10		;
+    1384:	3b 41       	pop	r11		;
+    1386:	30 41       	ret			
 
-00001384 <__stop_progExec__>:
-    1384:	0f 12       	push	r15		;
-    1386:	3f 41       	pop	r15		;
+00001388 <__stop_progExec__>:
+    1388:	0f 12       	push	r15		;
+    138a:	3f 41       	pop	r15		;
 
-00001388 <__stop_progLoop>:
-    1388:	02 df       	bis	r15,	r2	;
-    138a:	fe 3f       	jmp	$-2      	;abs 0x1388
+0000138c <__stop_progLoop>:
+    138c:	02 df       	bis	r15,	r2	;
+    138e:	fe 3f       	jmp	$-2      	;abs 0x138c
 Disassembly of section .vectors:
 
 0000ffe0 <InterruptVectors>:

@@ -2,8 +2,8 @@
 #define ONEWIRE_H
 
 #define D500US	100
-#define D100US  10
-#define D150US  15
+#define D100US  16
+#define D150US  26
 
 
 

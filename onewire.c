@@ -4,7 +4,7 @@
    All Rights Reserved
    =======================================================================
    04/02/2005   Started this module.
-   bcl
+   bcl          Interrupts need to be disabled while running 1-wire ops.
    
    ----------------------------------------------------------------------- */
 #include "hardware.h"
@@ -35,6 +35,8 @@ int ow_reset( void )
 {
   int status;
   
+
+  _DINT();
   /* Pull the 1-wire bus low for 500uS */
   P1OUT &= ~0x02;
   P1DIR |= 0x02;
@@ -43,7 +45,7 @@ int ow_reset( void )
   
   /* Allow resistor to pull it high */
   P1DIR &= ~0x02;
-  
+
   /* Delay 100uS before testing for presence */
   ow_delay( D100US );
 
@@ -53,6 +55,7 @@ int ow_reset( void )
   /* Finish out the presence pulse time */
   ow_delay( D150US );
   
+  _EINT();
   return status;
 }
 
