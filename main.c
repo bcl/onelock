@@ -117,20 +117,29 @@ int main(void)
       if( !(P1IN & 0x02) )
       {
         success = 0;
+        for(i=0;i<8;i++)
+        {
+          sn[i] = 0;
+        }
         for(i=0;(i<5) && !success;i++)
         {
           if( ow_reset() )
           {
             /* Turn on the LED */
-            P1OUT |= 0x01;
+//            P1OUT |= 0x01;
               
             /* Go Read the 1-wire serial number */
             ow_read_rom( sn );
  
+ 
+            if( sn[0] == 0x21 )
+            {
+              P1OUT |= 0x01;
+            }
+ 
             /* Check checksum */
  
             /* Check against the access list */
-              
               
             /* Unlock the lock */
             

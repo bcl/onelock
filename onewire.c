@@ -151,18 +151,6 @@ void ow_read_rom( unsigned char *sn )
 {
   unsigned int i;
 
-
-#ifdef TEST_TIMING
-  while(1)
-  {
-    ow_read();
-    ow_delay(D500US);
-    ow_delay(D500US);
-    ow_delay(D500US);
-    ow_delay(D500US);    
-  }
-#endif
-  
   if( ow_reset() == 1 )
   {
     /* Send the read ROM command */
