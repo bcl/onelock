@@ -14,7 +14,7 @@
    
    ----------------------------------------------------------------------- */
 #include "hardware.h"
-#include "interrupt.h"
+#include "interrupts.h"
 #include "dco.h"
 
 

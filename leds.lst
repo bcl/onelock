@@ -210,7 +210,7 @@ SYMBOL TABLE:
 0000013a l       *ABS*	00000000 __RESLO
 0000013c l       *ABS*	00000000 __RESHI
 0000013e l       *ABS*	00000000 __SUMEXT
-000011e4 l       .text	00000000 Letext
+0000120c l       .text	00000000 Letext
 00000000 l    df *ABS*	00000000 interrupts.c
 00000130 l       *ABS*	00000000 __MPY
 00000132 l       *ABS*	00000000 __MPYS
@@ -220,7 +220,7 @@ SYMBOL TABLE:
 0000013a l       *ABS*	00000000 __RESLO
 0000013c l       *ABS*	00000000 __RESHI
 0000013e l       *ABS*	00000000 __SUMEXT
-00001286 l       .text	00000000 Letext
+000012ae l       .text	00000000 Letext
 00000000 l    df *ABS*	00000000 dco.c
 00000130 l       *ABS*	00000000 __MPY
 00000132 l       *ABS*	00000000 __MPYS
@@ -230,71 +230,83 @@ SYMBOL TABLE:
 0000013a l       *ABS*	00000000 __RESLO
 0000013c l       *ABS*	00000000 __RESHI
 0000013e l       *ABS*	00000000 __SUMEXT
-00001310 l       .text	00000000 Letext
+00001338 l       .text	00000000 Letext
+00000000 l    df *ABS*	00000000 onewire.c
+00000130 l       *ABS*	00000000 __MPY
+00000132 l       *ABS*	00000000 __MPYS
+00000134 l       *ABS*	00000000 __MAC
+00000136 l       *ABS*	00000000 __MACS
+00000138 l       *ABS*	00000000 __OP2
+0000013a l       *ABS*	00000000 __RESLO
+0000013c l       *ABS*	00000000 __RESHI
+0000013e l       *ABS*	00000000 __SUMEXT
+00001384 l       .text	00000000 Letext
 00000000 l    df *ABS*	00000000 <command line>
 00000000 l    df *ABS*	00000000 <built-in>
-00001314 l       .text	00000000 __stop_progLoop
+00001388 l       .text	00000000 __stop_progLoop
 00001120  w      .text	00000000 _clear_bss_init__
 00000200 g     O .bss	00000002 VZC_2delta
-00001284 g     F .text	00000002 INT_nmi
-00001318 g       .text	00000000 _etext
-0000124e g     F .text	00000002 INT_uart1rx
-00001310 g       .text	00000000 __stop_progExec__
+00001348 g     F .text	0000003c ow_reset
+000012ac g     F .text	00000002 INT_nmi
+0000138c g       .text	00000000 _etext
+00001276 g     F .text	00000002 INT_uart1rx
+00001384 g       .text	00000000 __stop_progExec__
 0000113a g       .text	00000000 _unexpected_1_
 0000113a  w      .text	00000000 vector_ffe0
-0000117a g     F .text	00000026 InitDCO
+0000117c g     F .text	00000026 InitDCO
 00000206 g     O .bss	00000002 VZC_LastCap
-00001274 g     F .text	00000002 INT_timera0
+0000129c g     F .text	00000002 INT_timera0
 00000202 g     O .bss	00000001 Status
-00001282 g     F .text	00000002 INT_timerb0
-00001274 g       .text	00000000 vector_ffec
-00001278 g       .text	00000000 vector_fff0
-0000124a g     F .text	00000002 INT_port2
+000012aa g     F .text	00000002 INT_timerb0
+0000129c g       .text	00000000 vector_ffec
+000012a0 g       .text	00000000 vector_fff0
+00001272 g     F .text	00000002 INT_port2
 0000113a g       .text	00000000 __dtors_end
 00000208 g       .bss	00000000 __bss_end
-00001284 g       .text	00000000 vector_fffc
-00001276 g     F .text	00000002 INT_adc
-0000124c g       .text	00000000 vector_ffe4
-0000124c g     F .text	00000002 INT_uart1tx
-0000127e g     F .text	00000002 INT_compa
+000012ac g       .text	00000000 vector_fffc
+0000129e g     F .text	00000002 INT_adc
+00001274 g       .text	00000000 vector_ffe4
+00001274 g     F .text	00000002 INT_uart1tx
+000012a6 g     F .text	00000002 INT_compa
 0000ffe0 g     O .vectors	00000020 InterruptVectors
-00001250 g     F .text	00000002 INT_port1
+00001278 g     F .text	00000002 INT_port1
 00000204 g     O .bss	00000002 Rsel
 00001136  w      .text	00000000 _end_of_init__
-00001280 g     F .text	00000002 INT_timerb1
-0000127a g     F .text	00000002 INT_uart0rx
-0000124a g       .text	00000000 vector_ffe2
-00001250 g       .text	00000000 vector_ffe8
+000012a8 g     F .text	00000002 INT_timerb1
+000012a2 g     F .text	00000002 INT_uart0rx
+00001272 g       .text	00000000 vector_ffe2
+00001278 g       .text	00000000 vector_ffe8
 0000113e  w      .text	00000000 _unexpected_
-00001282 g       .text	00000000 vector_fffa
+000012aa g       .text	00000000 vector_fffa
 00001100 g       .text	00000000 _reset_vector__
 0000113a g       .text	00000000 __ctors_start
-0000116c g     F .text	0000000e InitOSC
+0000116e g     F .text	0000000e InitOSC
 00000200 g       .bss	00000000 __bss_start
-00001276 g       .text	00000000 vector_ffee
-0000127c g       .text	00000000 vector_fff4
-000011a0 g     F .text	00000044 main
-000011e4 g     F .text	00000066 InitIRQ
-00001280 g       .text	00000000 vector_fff8
-0000127a g       .text	00000000 vector_fff2
+0000129e g       .text	00000000 vector_ffee
+000012a4 g       .text	00000000 vector_fff4
+000011a2 g     F .text	0000006a main
+0000120c g     F .text	00000066 InitIRQ
+000012a8 g       .text	00000000 vector_fff8
+000012a2 g       .text	00000000 vector_fff2
 00010000 g       .vectors	00000000 _vectors_end
-0000124e g       .text	00000000 vector_ffe6
+00001276 g       .text	00000000 vector_ffe6
 00001140 g     F .text	00000012 delay
-00001252 g     F .text	00000022 INT_timera1
-00001152 g     F .text	0000001a InitPorts
-00001286 g     F .text	00000032 Rsel_set
+0000127a g     F .text	00000022 INT_timera1
+00001152 g     F .text	0000001c InitPorts
+000012ae g     F .text	00000032 Rsel_set
 0000113a g       .text	00000000 __dtors_start
 0000113a g       .text	00000000 __ctors_end
 00000a00 g       *ABS*	00000000 __stack
-0000127c g     F .text	00000002 INT_wdt
+000012a4 g     F .text	00000002 INT_wdt
 00000200 g       .data	00000000 _edata
 00000208 g       .noinit	00000000 _end
-000012b8 g     F .text	00000058 dco_step
-0000127e g       .text	00000000 vector_fff6
+000012e0 g     F .text	00000058 dco_step
+000012a6 g       .text	00000000 vector_fff6
+00001338 g     F .text	00000010 ow_delay
 00001106  w      .text	00000000 _copy_data_init__
-00001278 g     F .text	00000002 INT_uart0tx
+000012a0 g     F .text	00000002 INT_uart0tx
 00000200 g       .data	00000000 __data_start
-00001252 g       .text	00000000 vector_ffea
+0000127a g       .text	00000000 vector_ffea
 
 
 Disassembly of section .text:
@@ -304,7 +316,7 @@ Disassembly of section .text:
     1104:	20 01 
 
 00001106 <_copy_data_init__>:
-    1106:	3f 40 18 13 	mov	#4888,	r15	;#0x1318
+    1106:	3f 40 8c 13 	mov	#5004,	r15	;#0x138c
     110a:	3e 40 00 02 	mov	#512,	r14	;#0x0200
     110e:	3d 40 00 02 	mov	#512,	r13	;#0x0200
     1112:	0d 9e       	cmp	r14,	r13	;
@@ -325,7 +337,7 @@ Disassembly of section .text:
     1134:	fb 2b       	jnc	$-8      	;abs 0x112c
 
 00001136 <_end_of_init__>:
-    1136:	30 40 a0 11 	br	#0x11a0		;
+    1136:	30 40 a2 11 	br	#0x11a2		;
 
 0000113a <__ctors_end>:
     113a:	30 40 3e 11 	br	#0x113e		;
@@ -370,62 +382,63 @@ void InitPorts( void )
     115e:	c2 43 2e 00 	mov.b	#0,	&0x002e	;r3 As==00
 
   P1DIR  = P1DIR_INIT;                //Init port direction register of port1
-    1162:	f2 43 22 00 	mov.b	#-1,	&0x0022	;r3 As==11
+    1162:	f2 40 fd ff 	mov.b	#-3,	&0x0022	;#0xfffd
+    1166:	22 00 
   P2DIR  = P2DIR_INIT;                //Init port direction register of port2
-    1166:	f2 43 2a 00 	mov.b	#-1,	&0x002a	;r3 As==11
+    1168:	f2 43 2a 00 	mov.b	#-1,	&0x002a	;r3 As==11
 }
-    116a:	30 41       	ret			
+    116c:	30 41       	ret			
 
-0000116c <InitOSC>:
+0000116e <InitOSC>:
 
 void InitOSC( void )
 {
     /* Clear OSC Fault */
     IE1 = 0x00;
-    116c:	c2 43 00 00 	mov.b	#0,	&0x0000	;r3 As==00
+    116e:	c2 43 00 00 	mov.b	#0,	&0x0000	;r3 As==00
     IFG1 = 0x00;
-    1170:	c2 43 02 00 	mov.b	#0,	&0x0002	;r3 As==00
+    1172:	c2 43 02 00 	mov.b	#0,	&0x0002	;r3 As==00
     
     /* Select DCO/1 as MCLK */
     BCSCTL2 = 0x00;
-    1174:	c2 43 58 00 	mov.b	#0,	&0x0058	;r3 As==00
+    1176:	c2 43 58 00 	mov.b	#0,	&0x0058	;r3 As==00
 }
-    1178:	30 41       	ret			
+    117a:	30 41       	ret			
 
-0000117a <InitDCO>:
+0000117c <InitDCO>:
 
 void InitDCO( void )
 {
     /* Setup the DCO frequency */
     Rsel = RSEL_NOM;
-    117a:	a2 42 04 02 	mov	#4,	&0x0204	;r2 As==10
+    117c:	a2 42 04 02 	mov	#4,	&0x0204	;r2 As==10
     Rsel_set( Rsel );
-    117e:	2f 42       	mov	#4,	r15	;r2 As==10
-    1180:	b0 12 86 12 	call	#4742		;#0x1286
+    1180:	2f 42       	mov	#4,	r15	;r2 As==10
+    1182:	b0 12 ae 12 	call	#4782		;#0x12ae
     
     /* Setup for ACLK/8 */
     BCSCTL1 |= DIVA_DIV8;
-    1184:	f2 d0 30 00 	bis.b	#48,	&0x0057	;#0x0030
-    1188:	57 00 
+    1186:	f2 d0 30 00 	bis.b	#48,	&0x0057	;#0x0030
+    118a:	57 00 
 
     /* Diagnostic */
     /* Output SMCLK on P1.4 pin 16 f149 */
     P1SEL |= 0x10;
-    118a:	f2 d0 10 00 	bis.b	#16,	&0x0026	;#0x0010
-    118e:	26 00 
+    118c:	f2 d0 10 00 	bis.b	#16,	&0x0026	;#0x0010
+    1190:	26 00 
     P1DIR |= 0x10;
-    1190:	f2 d0 10 00 	bis.b	#16,	&0x0022	;#0x0010
-    1194:	22 00 
+    1192:	f2 d0 10 00 	bis.b	#16,	&0x0022	;#0x0010
+    1196:	22 00 
     
     /* Output ACLK on P2.0 pin 20 f149 */
     P2SEL |= 0x01;
-    1196:	d2 d3 2e 00 	bis.b	#1,	&0x002e	;r3 As==01
+    1198:	d2 d3 2e 00 	bis.b	#1,	&0x002e	;r3 As==01
     P2DIR |= 0x01;
-    119a:	d2 d3 2a 00 	bis.b	#1,	&0x002a	;r3 As==01
+    119c:	d2 d3 2a 00 	bis.b	#1,	&0x002a	;r3 As==01
 }
-    119e:	30 41       	ret			
+    11a0:	30 41       	ret			
 
-000011a0 <main>:
+000011a2 <main>:
 
 
 
@@ -434,100 +447,115 @@ void InitDCO( void )
    ----------------------------------------------------------------------- */
 int main(void)
 {
-    11a0:	31 40 00 0a 	mov	#2560,	r1	;#0x0a00
+    11a2:	31 40 f8 09 	mov	#2552,	r1	;#0x09f8
     short i;
     short adj_timer;
+    unsigned char sn[8];		/* 1-wire serial number 	*/
     
     /* Watchdog disabled */
     WDTCTL = WDTPW|WDTHOLD;
-    11a4:	b2 40 80 5a 	mov	#23168,	&0x0120	;#0x5a80
-    11a8:	20 01 
+    11a6:	b2 40 80 5a 	mov	#23168,	&0x0120	;#0x5a80
+    11aa:	20 01 
 
     Status = 0;
-    11aa:	c2 43 02 02 	mov.b	#0,	&0x0202	;r3 As==00
+    11ac:	c2 43 02 02 	mov.b	#0,	&0x0202	;r3 As==00
 
     InitPorts();
-    11ae:	b0 12 52 11 	call	#4434		;#0x1152
+    11b0:	b0 12 52 11 	call	#4434		;#0x1152
     InitOSC();
-    11b2:	b0 12 6c 11 	call	#4460		;#0x116c
+    11b4:	b0 12 6e 11 	call	#4462		;#0x116e
     InitDCO();
-    11b6:	b0 12 7a 11 	call	#4474		;#0x117a
+    11b8:	b0 12 7c 11 	call	#4476		;#0x117c
     InitIRQ();
-    11ba:	b0 12 e4 11 	call	#4580		;#0x11e4
+    11bc:	b0 12 0c 12 	call	#4620		;#0x120c
 
+    P1OUT &= ~0x01;
+    11c0:	d2 c3 21 00 	bic.b	#1,	&0x0021	;r3 As==01
     adj_timer = DCO_ADJ_TIME;
-    11be:	2e 43       	mov	#2,	r14	;r3 As==10
-    11c0:	3b 40 b8 12 	mov	#4792,	r11	;#0x12b8
+    11c4:	2a 43       	mov	#2,	r10	;r3 As==10
+    11c6:	38 40 e0 12 	mov	#4832,	r8	;#0x12e0
+    11ca:	39 40 48 13 	mov	#4936,	r9	;#0x1348
     while (1) {                         //main loop, never ends...
       if( Status & TASK_OVR )
-    11c4:	5f 42 02 02 	mov.b	&0x0202,r15	;0x0202
-    11c8:	1f f3       	and	#1,	r15	;r3 As==01
-    11ca:	fc 27       	jz	$-6      	;abs 0x11c4
+    11ce:	5f 42 02 02 	mov.b	&0x0202,r15	;0x0202
+    11d2:	1f f3       	and	#1,	r15	;r3 As==01
+    11d4:	04 24       	jz	$+10     	;abs 0x11de
       {
         if( --adj_timer == 0 )
-    11cc:	3e 53       	add	#-1,	r14	;r3 As==11
-    11ce:	03 24       	jz	$+8      	;abs 0x11d6
+    11d6:	3a 53       	add	#-1,	r10	;r3 As==11
+    11d8:	11 24       	jz	$+36     	;abs 0x11fc
         {
           dco_step();
           adj_timer = DCO_ADJ_TIME;
-          
-          /* Diagnostic */
-          P1OUT ^= 1;
+          P1OUT &= ~0x01;
         }
         Status &= ~TASK_OVR; 
-    11d0:	d2 c3 02 02 	bic.b	#1,	&0x0202	;r3 As==01
-    11d4:	f7 3f       	jmp	$-16     	;abs 0x11c4
-    11d6:	8b 12       	call	r11		;
-    11d8:	2e 43       	mov	#2,	r14	;r3 As==10
-    11da:	d2 e3 21 00 	xor.b	#1,	&0x0021	;r3 As==01
-    11de:	f8 3f       	jmp	$-14     	;abs 0x11d0
+    11da:	d2 c3 02 02 	bic.b	#1,	&0x0202	;r3 As==01
+      }
+
+      if( !(P1IN & 0x02) )
+    11de:	5f 42 20 00 	mov.b	&0x0020,r15	;0x0020
+    11e2:	2f f3       	and	#2,	r15	;r3 As==10
+    11e4:	f4 23       	jnz	$-22     	;abs 0x11ce
+      {
+        /* See if a device is connected */
+        for(i=0; i<5; i++)
+    11e6:	2b 42       	mov	#4,	r11	;r2 As==10
+        {
+          if( ow_reset() )
+    11e8:	89 12       	call	r9		;
+    11ea:	0f 93       	cmp	#0,	r15	;r3 As==00
+    11ec:	02 24       	jz	$+6      	;abs 0x11f2
+          {
+            P1OUT |= 0x01;
+    11ee:	d2 d3 21 00 	bis.b	#1,	&0x0021	;r3 As==01
+    11f2:	3b 53       	add	#-1,	r11	;r3 As==11
+    11f4:	3b b0 00 80 	bit	#-32768,r11	;#0x8000
+    11f8:	f7 37       	jge	$-16     	;abs 0x11e8
+    11fa:	e9 3f       	jmp	$-44     	;abs 0x11ce
+    11fc:	88 12       	call	r8		;
+    11fe:	2a 43       	mov	#2,	r10	;r3 As==10
+    1200:	d2 c3 21 00 	bic.b	#1,	&0x0021	;r3 As==01
+    1204:	ea 3f       	jmp	$-42     	;abs 0x11da
+              
+            /* Go Read the 1-wire serial number */
+//            ow_read_rom( sn );
+ 
+            /* Check against the access list */
+              
+              
+            /* Unlock the lock */
+              
+          } /* presence */
+        } /* loop */
       }
     }
 }
-    11e0:	30 40 10 13 	br	#0x1310		;
+    1206:	31 52       	add	#8,	r1	;r2 As==11
+    1208:	30 40 84 13 	br	#0x1384		;
 
-000011e4 <InitIRQ>:
+0000120c <InitIRQ>:
 {
   short i;
   
   /* Setup Timer A0 run off MCLK /1, continuous up count, start */
   TACTL = TASSEL_SMCLK | TACLR;
-    11e4:	b2 40 04 02 	mov	#516,	&0x0160	;#0x0204
-    11e8:	60 01 
+    120c:	b2 40 04 02 	mov	#516,	&0x0160	;#0x0204
+    1210:	60 01 
   TACTL |= MC_CONT;
-    11ea:	b2 d0 20 00 	bis	#32,	&0x0160	;#0x0020
-    11ee:	60 01 
+    1212:	b2 d0 20 00 	bis	#32,	&0x0160	;#0x0020
+    1216:	60 01 
   
   /* Setup CCR2 */
   CCTL2 = CM_POS|CCIS_1|SCS|CAP|OUTMOD_SET;
-    11f0:	b2 40 20 59 	mov	#22816,	&0x0166	;#0x5920
-    11f4:	66 01 
+    1218:	b2 40 20 59 	mov	#22816,	&0x0166	;#0x5920
+    121c:	66 01 
 
   /* Delay a bit for ACLK to settle */
   for (i = 0; i<0x1000; i++)
-    11f6:	3f 40 00 10 	mov	#4096,	r15	;#0x1000
+    121e:	3f 40 00 10 	mov	#4096,	r15	;#0x1000
   {
     nop();
-    11fa:	03 43       	nop			
-    11fc:	03 43       	nop			
-    11fe:	03 43       	nop			
-    1200:	03 43       	nop			
-    1202:	03 43       	nop			
-    1204:	03 43       	nop			
-    1206:	03 43       	nop			
-    1208:	03 43       	nop			
-    120a:	03 43       	nop			
-    120c:	03 43       	nop			
-    120e:	03 43       	nop			
-    1210:	03 43       	nop			
-    1212:	03 43       	nop			
-    1214:	03 43       	nop			
-    1216:	03 43       	nop			
-    1218:	03 43       	nop			
-    121a:	03 43       	nop			
-    121c:	03 43       	nop			
-    121e:	03 43       	nop			
-    1220:	03 43       	nop			
     1222:	03 43       	nop			
     1224:	03 43       	nop			
     1226:	03 43       	nop			
@@ -540,50 +568,70 @@ int main(void)
     1234:	03 43       	nop			
     1236:	03 43       	nop			
     1238:	03 43       	nop			
-    123a:	3f 50 e0 ff 	add	#-32,	r15	;#0xffe0
-    123e:	dd 23       	jnz	$-68     	;abs 0x11fa
+    123a:	03 43       	nop			
+    123c:	03 43       	nop			
+    123e:	03 43       	nop			
+    1240:	03 43       	nop			
+    1242:	03 43       	nop			
+    1244:	03 43       	nop			
+    1246:	03 43       	nop			
+    1248:	03 43       	nop			
+    124a:	03 43       	nop			
+    124c:	03 43       	nop			
+    124e:	03 43       	nop			
+    1250:	03 43       	nop			
+    1252:	03 43       	nop			
+    1254:	03 43       	nop			
+    1256:	03 43       	nop			
+    1258:	03 43       	nop			
+    125a:	03 43       	nop			
+    125c:	03 43       	nop			
+    125e:	03 43       	nop			
+    1260:	03 43       	nop			
+    1262:	3f 50 e0 ff 	add	#-32,	r15	;#0xffe0
+    1266:	dd 23       	jnz	$-68     	;abs 0x1222
   }
   /* Enable CCTL2 interrupt */
   CCTL2 |= CCIE;
-    1240:	b2 d0 10 00 	bis	#16,	&0x0166	;#0x0010
-    1244:	66 01 
+    1268:	b2 d0 10 00 	bis	#16,	&0x0166	;#0x0010
+    126c:	66 01 
 
   _EINT();
-    1246:	32 d2       	eint			
+    126e:	32 d2       	eint			
 }
-    1248:	30 41       	ret			
+    1270:	30 41       	ret			
 
-0000124a <INT_port2>:
+00001272 <INT_port2>:
 
 
 
 
 interrupt (PORT2_VECTOR) INT_port2( void )
 {
-    124a:	00 13       	reti			
+    1272:	00 13       	reti			
 
-0000124c <INT_uart1tx>:
+00001274 <INT_uart1tx>:
 }
 
 interrupt (UART1TX_VECTOR) INT_uart1tx( void )
 {
-    124c:	00 13       	reti			
+    1274:	00 13       	reti			
 
-0000124e <INT_uart1rx>:
+00001276 <INT_uart1rx>:
 }
 
 interrupt (UART1RX_VECTOR) INT_uart1rx( void )
 {
-    124e:	00 13       	reti			
+    1276:	00 13       	reti			
 
-00001250 <INT_port1>:
+00001278 <INT_port1>:
 }
 
 interrupt (PORT1_VECTOR) INT_port1( void )
 {
-    1250:	00 13       	reti			
+    1278:	00 13       	reti			
 
-00001252 <INT_timera1>:
+0000127a <INT_timera1>:
 } 
 
 /* -----------------------------------------------------------------------
@@ -591,125 +639,125 @@ interrupt (PORT1_VECTOR) INT_port1( void )
    ----------------------------------------------------------------------- */
 interrupt (TIMERA1_VECTOR) INT_timera1( void )
 {
-    1252:	0f 12       	push	r15		;
+    127a:	0f 12       	push	r15		;
   if( TAIV == 0x04 )
-    1254:	a2 92 2e 01 	cmp	#4,	&0x012e	;r2 As==10
-    1258:	0b 20       	jnz	$+24     	;abs 0x1270
+    127c:	a2 92 2e 01 	cmp	#4,	&0x012e	;r2 As==10
+    1280:	0b 20       	jnz	$+24     	;abs 0x1298
   {
     /* CCR2 Interrupt */
     
     /* Measure the 32.768KHz period */
     VZC_2delta = CCR2 - VZC_LastCap;
-    125a:	1f 42 76 01 	mov	&0x0176,r15	;0x0176
-    125e:	1f 82 06 02 	sub	&0x0206,r15	;0x0206
-    1262:	82 4f 00 02 	mov	r15,	&0x0200	;
+    1282:	1f 42 76 01 	mov	&0x0176,r15	;0x0176
+    1286:	1f 82 06 02 	sub	&0x0206,r15	;0x0206
+    128a:	82 4f 00 02 	mov	r15,	&0x0200	;
     VZC_LastCap = CCR2;
-    1266:	92 42 76 01 	mov	&0x0176,&0x0206	;0x0176
-    126a:	06 02 
+    128e:	92 42 76 01 	mov	&0x0176,&0x0206	;0x0176
+    1292:	06 02 
     Status |= TASK_OVR;
-    126c:	92 d3 02 02 	bis	#1,	&0x0202	;r3 As==01
+    1294:	92 d3 02 02 	bis	#1,	&0x0202	;r3 As==01
   }
 }
-    1270:	3f 41       	pop	r15		;
-    1272:	00 13       	reti			
+    1298:	3f 41       	pop	r15		;
+    129a:	00 13       	reti			
 
-00001274 <INT_timera0>:
+0000129c <INT_timera0>:
 
 interrupt (TIMERA0_VECTOR) INT_timera0( void )
 {
-    1274:	00 13       	reti			
+    129c:	00 13       	reti			
 
-00001276 <INT_adc>:
+0000129e <INT_adc>:
 }
 
 interrupt (ADC_VECTOR) INT_adc( void )
 {
-    1276:	00 13       	reti			
+    129e:	00 13       	reti			
 
-00001278 <INT_uart0tx>:
+000012a0 <INT_uart0tx>:
 }
 
 interrupt (UART0TX_VECTOR) INT_uart0tx( void )
 {
-    1278:	00 13       	reti			
+    12a0:	00 13       	reti			
 
-0000127a <INT_uart0rx>:
+000012a2 <INT_uart0rx>:
 }
 
 interrupt (UART0RX_VECTOR) INT_uart0rx( void )
 {
-    127a:	00 13       	reti			
+    12a2:	00 13       	reti			
 
-0000127c <INT_wdt>:
+000012a4 <INT_wdt>:
 }
 
 interrupt (WDT_VECTOR) INT_wdt( void )
 {
-    127c:	00 13       	reti			
+    12a4:	00 13       	reti			
 
-0000127e <INT_compa>:
+000012a6 <INT_compa>:
 }
 
 interrupt (COMPARATORA_VECTOR) INT_compa( void )
 {
-    127e:	00 13       	reti			
+    12a6:	00 13       	reti			
 
-00001280 <INT_timerb1>:
+000012a8 <INT_timerb1>:
 }
 
 interrupt (TIMERB1_VECTOR) INT_timerb1( void )
 {
-    1280:	00 13       	reti			
+    12a8:	00 13       	reti			
 
-00001282 <INT_timerb0>:
+000012aa <INT_timerb0>:
 }
 
 interrupt (TIMERB0_VECTOR) INT_timerb0( void )
 {
-    1282:	00 13       	reti			
+    12aa:	00 13       	reti			
 
-00001284 <INT_nmi>:
+000012ac <INT_nmi>:
 }
 
 interrupt (NMI_VECTOR) INT_nmi( void )
 {
-    1284:	00 13       	reti			
+    12ac:	00 13       	reti			
 
-00001286 <Rsel_set>:
+000012ae <Rsel_set>:
 /* -----------------------------------------------------------------------
    Adjust the DCO resistor selection in streps until it is at rsel
    ----------------------------------------------------------------------- */
 void Rsel_set( short rsel )
 {
-    1286:	0e 4f       	mov	r15,	r14	;
+    12ae:	0e 4f       	mov	r15,	r14	;
   while( (BCSCTL1 & 0x07) != rsel )
-    1288:	5f 42 57 00 	mov.b	&0x0057,r15	;0x0057
-    128c:	3f f0 07 00 	and	#7,	r15	;#0x0007
-    1290:	0f 9e       	cmp	r14,	r15	;
-    1292:	0e 24       	jz	$+30     	;abs 0x12b0
+    12b0:	5f 42 57 00 	mov.b	&0x0057,r15	;0x0057
+    12b4:	3f f0 07 00 	and	#7,	r15	;#0x0007
+    12b8:	0f 9e       	cmp	r14,	r15	;
+    12ba:	0e 24       	jz	$+30     	;abs 0x12d8
   {
     if( (BCSCTL1 & 0x07 ) > rsel )
-    1294:	5f 42 57 00 	mov.b	&0x0057,r15	;0x0057
-    1298:	3f f0 07 00 	and	#7,	r15	;#0x0007
-    129c:	0e 9f       	cmp	r15,	r14	;
-    129e:	09 34       	jge	$+20     	;abs 0x12b2
+    12bc:	5f 42 57 00 	mov.b	&0x0057,r15	;0x0057
+    12c0:	3f f0 07 00 	and	#7,	r15	;#0x0007
+    12c4:	0e 9f       	cmp	r15,	r14	;
+    12c6:	09 34       	jge	$+20     	;abs 0x12da
     {
       BCSCTL1 -= 1;
-    12a0:	f2 53 57 00 	add.b	#-1,	&0x0057	;r3 As==11
-    12a4:	5f 42 57 00 	mov.b	&0x0057,r15	;0x0057
-    12a8:	3f f0 07 00 	and	#7,	r15	;#0x0007
-    12ac:	0f 9e       	cmp	r14,	r15	;
-    12ae:	f2 23       	jnz	$-26     	;abs 0x1294
+    12c8:	f2 53 57 00 	add.b	#-1,	&0x0057	;r3 As==11
+    12cc:	5f 42 57 00 	mov.b	&0x0057,r15	;0x0057
+    12d0:	3f f0 07 00 	and	#7,	r15	;#0x0007
+    12d4:	0f 9e       	cmp	r14,	r15	;
+    12d6:	f2 23       	jnz	$-26     	;abs 0x12bc
     } else {
       BCSCTL1 += 1;
     }
   }
 }
-    12b0:	30 41       	ret			
-    12b2:	d2 53 57 00 	inc.b	&0x0057		;
-    12b6:	f6 3f       	jmp	$-18     	;abs 0x12a4
+    12d8:	30 41       	ret			
+    12da:	d2 53 57 00 	inc.b	&0x0057		;
+    12de:	f6 3f       	jmp	$-18     	;abs 0x12cc
 
-000012b8 <dco_step>:
+000012e0 <dco_step>:
 
 
 /* -----------------------------------------------------------------------
@@ -718,9 +766,9 @@ void Rsel_set( short rsel )
 void dco_step( void )
 {
     if( DCOCTL == DCO_MAX )
-    12b8:	f2 90 e2 ff 	cmp.b	#-30,	&0x0056	;#0xffe2
-    12bc:	56 00 
-    12be:	1e 24       	jz	$+62     	;abs 0x12fc
+    12e0:	f2 90 e2 ff 	cmp.b	#-30,	&0x0056	;#0xffe2
+    12e4:	56 00 
+    12e6:	1e 24       	jz	$+62     	;abs 0x1324
     {
       /* Increment Rsel */
       if( (BCSCTL1 & 0x07)  < 0x07 )
@@ -729,9 +777,9 @@ void dco_step( void )
         DCOCTL = 0x60;
       } 
     } else if( DCOCTL == DCO_MIN ) {
-    12c0:	f2 90 05 00 	cmp.b	#5,	&0x0056	;#0x0005
-    12c4:	56 00 
-    12c6:	0e 24       	jz	$+30     	;abs 0x12e4
+    12e8:	f2 90 05 00 	cmp.b	#5,	&0x0056	;#0x0005
+    12ec:	56 00 
+    12ee:	0e 24       	jz	$+30     	;abs 0x130c
       /* Decrement Rsel */
       if( (BCSCTL1 & 0x07) > 0x00 )
       {
@@ -740,47 +788,122 @@ void dco_step( void )
       } 
     } else {
       if( VZC_2delta < FSET )
-    12c8:	b2 90 f4 00 	cmp	#244,	&0x0200	;#0x00f4
-    12cc:	00 02 
-    12ce:	03 2c       	jc	$+8      	;abs 0x12d6
+    12f0:	b2 90 f4 00 	cmp	#244,	&0x0200	;#0x00f4
+    12f4:	00 02 
+    12f6:	03 2c       	jc	$+8      	;abs 0x12fe
       {
         DCOCTL += 1;
-    12d0:	d2 53 56 00 	inc.b	&0x0056		;
+    12f8:	d2 53 56 00 	inc.b	&0x0056		;
       } else if( VZC_2delta > FSET ) {
         DCOCTL -= 1;
       }    
     }
 }
-    12d4:	30 41       	ret			
-    12d6:	b2 90 f5 00 	cmp	#245,	&0x0200	;#0x00f5
-    12da:	00 02 
-    12dc:	02 28       	jnc	$+6      	;abs 0x12e2
-    12de:	f2 53 56 00 	add.b	#-1,	&0x0056	;r3 As==11
-    12e2:	30 41       	ret			
-    12e4:	5f 42 57 00 	mov.b	&0x0057,r15	;0x0057
-    12e8:	3f f0 07 00 	and	#7,	r15	;#0x0007
-    12ec:	1f 93       	cmp	#1,	r15	;r3 As==01
-    12ee:	f9 3b       	jl	$-12     	;abs 0x12e2
-    12f0:	f2 53 57 00 	add.b	#-1,	&0x0057	;r3 As==11
-    12f4:	f2 40 60 00 	mov.b	#96,	&0x0056	;#0x0060
-    12f8:	56 00 
-    12fa:	30 41       	ret			
-    12fc:	5f 42 57 00 	mov.b	&0x0057,r15	;0x0057
-    1300:	3f f0 07 00 	and	#7,	r15	;#0x0007
-    1304:	3f 90 07 00 	cmp	#7,	r15	;#0x0007
-    1308:	ec 37       	jge	$-38     	;abs 0x12e2
-    130a:	d2 53 57 00 	inc.b	&0x0057		;
-    130e:	f2 3f       	jmp	$-26     	;abs 0x12f4
+    12fc:	30 41       	ret			
+    12fe:	b2 90 f5 00 	cmp	#245,	&0x0200	;#0x00f5
+    1302:	00 02 
+    1304:	02 28       	jnc	$+6      	;abs 0x130a
+    1306:	f2 53 56 00 	add.b	#-1,	&0x0056	;r3 As==11
+    130a:	30 41       	ret			
+    130c:	5f 42 57 00 	mov.b	&0x0057,r15	;0x0057
+    1310:	3f f0 07 00 	and	#7,	r15	;#0x0007
+    1314:	1f 93       	cmp	#1,	r15	;r3 As==01
+    1316:	f9 3b       	jl	$-12     	;abs 0x130a
+    1318:	f2 53 57 00 	add.b	#-1,	&0x0057	;r3 As==11
+    131c:	f2 40 60 00 	mov.b	#96,	&0x0056	;#0x0060
+    1320:	56 00 
+    1322:	30 41       	ret			
+    1324:	5f 42 57 00 	mov.b	&0x0057,r15	;0x0057
+    1328:	3f f0 07 00 	and	#7,	r15	;#0x0007
+    132c:	3f 90 07 00 	cmp	#7,	r15	;#0x0007
+    1330:	ec 37       	jge	$-38     	;abs 0x130a
+    1332:	d2 53 57 00 	inc.b	&0x0057		;
+    1336:	f2 3f       	jmp	$-26     	;abs 0x131c
 
-00001310 <__stop_progExec__>:
-    1310:	0f 12       	push	r15		;
-    1312:	3f 41       	pop	r15		;
+00001338 <ow_delay>:
+void ow_delay( unsigned int d )
+{
+  unsigned int i;
 
-00001314 <__stop_progLoop>:
-    1314:	02 df       	bis	r15,	r2	;
-    1316:	fe 3f       	jmp	$-2      	;abs 0x1314
+  for( i=0; i<d; i++ )
+    1338:	0e 43       	clr	r14		;
+    133a:	0e 9f       	cmp	r15,	r14	;
+    133c:	04 2c       	jc	$+10     	;abs 0x1346
+  {
+    asm("  nop");
+    133e:	03 43       	nop			
+    1340:	1e 53       	inc	r14		;
+    1342:	0e 9f       	cmp	r15,	r14	;
+    1344:	fc 2b       	jnc	$-6      	;abs 0x133e
+  }
+}
+    1346:	30 41       	ret			
+
+00001348 <ow_reset>:
+
+
+/* -----------------------------------------------------------------------
+   1-wire reset and presence detection
+
+   return 0 no presence detected
+   return 1 presence detected
+   ----------------------------------------------------------------------- */
+int ow_reset( void )
+{
+    1348:	0b 12       	push	r11		;
+    134a:	0a 12       	push	r10		;
+  int status;
+  
+  /* Pull the 1-wire bus low for 500uS */
+  P1OUT &= ~0x02;
+    134c:	e2 c3 21 00 	bic.b	#2,	&0x0021	;r3 As==10
+  P1DIR |= 0x02;
+    1350:	e2 d3 22 00 	bis.b	#2,	&0x0022	;r3 As==10
+  
+  ow_delay( D500US );
+    1354:	3a 40 38 13 	mov	#4920,	r10	;#0x1338
+    1358:	3f 40 64 00 	mov	#100,	r15	;#0x0064
+    135c:	8a 12       	call	r10		;
+  
+  /* Allow resistor to pull it high */
+  P1DIR &= ~0x02;
+    135e:	e2 c3 22 00 	bic.b	#2,	&0x0022	;r3 As==10
+  
+  /* Delay 100uS before testing for presence */
+  ow_delay( D100US );
+    1362:	3f 40 0a 00 	mov	#10,	r15	;#0x000a
+    1366:	8a 12       	call	r10		;
+
+  /* Grab the status of the bus */  
+  status =  !(P1IN & 0x02) ;
+    1368:	5f 42 20 00 	mov.b	&0x0020,r15	;0x0020
+    136c:	4b 4f       	mov.b	r15,	r11	;
+    136e:	12 c3       	clrc			
+    1370:	0b 10       	rrc	r11		;
+    1372:	1b e3       	xor	#1,	r11	;r3 As==01
+    1374:	1b f3       	and	#1,	r11	;r3 As==01
+  
+  /* Finish out the presence pulse time */
+  ow_delay( D150US );
+    1376:	3f 40 0f 00 	mov	#15,	r15	;#0x000f
+    137a:	8a 12       	call	r10		;
+  
+  return status;
+}
+    137c:	0f 4b       	mov	r11,	r15	;
+    137e:	3a 41       	pop	r10		;
+    1380:	3b 41       	pop	r11		;
+    1382:	30 41       	ret			
+
+00001384 <__stop_progExec__>:
+    1384:	0f 12       	push	r15		;
+    1386:	3f 41       	pop	r15		;
+
+00001388 <__stop_progLoop>:
+    1388:	02 df       	bis	r15,	r2	;
+    138a:	fe 3f       	jmp	$-2      	;abs 0x1388
 Disassembly of section .vectors:
 
 0000ffe0 <InterruptVectors>:
-    ffe0:	3a 11 4a 12 4c 12 4e 12 50 12 52 12 74 12 76 12     :.J.L.N.P.R.t.v.
-    fff0:	78 12 7a 12 7c 12 7e 12 80 12 82 12 84 12 00 11     x.z.|.~.........
+    ffe0:	3a 11 72 12 74 12 76 12 78 12 7a 12 9c 12 9e 12     :.r.t.v.x.z.....
+    fff0:	a0 12 a2 12 a4 12 a6 12 a8 12 aa 12 ac 12 00 11     ................

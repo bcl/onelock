@@ -3,8 +3,8 @@
    Copyright 2005 by Brian C. Lane
    All Rights Reserved
    ==========================[ HISTORY ]==================================
-   04/02/2005   Getting DCO adjustment working today.
-   bcl
+   04/02/2005   Getting DCO adjustment working today. done.
+   bcl          Adding 1-wire on P1.1
 
    03/20/2005   Storm has knocked out the internet, so I'll get a head 
    bcl          start on my LFNW presentation.
@@ -17,6 +17,7 @@
 #include "hardware.h"
 #include "interrupts.h"
 #include "dco.h"
+#include "onewire.h"
 
 
 short Rsel;			    /* DCO Resistor Selection 		*/
@@ -86,6 +87,7 @@ int main(void)
 {
     short i;
     short adj_timer;
+    unsigned char sn[8];		/* 1-wire serial number 	*/
     
     /* Watchdog disabled */
     WDTCTL = WDTPW|WDTHOLD;
@@ -97,6 +99,7 @@ int main(void)
     InitDCO();
     InitIRQ();
 
+    P1OUT &= ~0x01;
     adj_timer = DCO_ADJ_TIME;
     while (1) {                         //main loop, never ends...
       if( Status & TASK_OVR )
@@ -105,11 +108,30 @@ int main(void)
         {
           dco_step();
           adj_timer = DCO_ADJ_TIME;
-          
-          /* Diagnostic */
-          P1OUT ^= 1;
+          P1OUT &= ~0x01;
         }
         Status &= ~TASK_OVR; 
+      }
+
+      if( !(P1IN & 0x02) )
+      {
+        /* See if a device is connected */
+        for(i=0; i<5; i++)
+        {
+          if( ow_reset() )
+          {
+            P1OUT |= 0x01;
+              
+            /* Go Read the 1-wire serial number */
+//            ow_read_rom( sn );
+ 
+            /* Check against the access list */
+              
+              
+            /* Unlock the lock */
+              
+          } /* presence */
+        } /* loop */
       }
     }
 }

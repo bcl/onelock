@@ -10,7 +10,7 @@
 #define P2OUT_INIT      0                       // Init Output data of port2
 
 //Port Direction Register 'P1DIR, P2DIR':
-#define P1DIR_INIT      0xff                    // Init of Port1 Data-Direction Reg (Out=1 / Inp=0)
+#define P1DIR_INIT      0xfd                    // Init of Port1 Data-Direction Reg (Out=1 / Inp=0)
 #define P2DIR_INIT      0xff                    // Init of Port2 Data-Direction Reg (Out=1 / Inp=0)
 
 //Selection of Port or Module -Function on the Pins 'P1SEL, P2SEL'
