@@ -60,6 +60,9 @@ interrupt (TIMERA1_VECTOR) INT_timera1( void )
 {
 }
 
+/* -----------------------------------------------------------------------
+   Every 125mS adjust the DCO clock to tune it to the 32768Hz watch xtal
+   ----------------------------------------------------------------------- */
 interrupt (TIMERA0_VECTOR) INT_timera0( void )
 {
   unsigned short t;
@@ -91,6 +94,9 @@ interrupt (TIMERA0_VECTOR) INT_timera0( void )
   /* Clear and restart Timer B */
   TBCTL |= TBCLR;
   TBCTL |= MC_CONT;
+
+  /* Diagnostic */
+  P1OUT ^= 1;
 }
 
 interrupt (ADC_VECTOR) INT_adc( void )

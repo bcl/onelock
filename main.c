@@ -69,8 +69,8 @@ int main(void) {
     P2IE   = P2IE_INIT;
 
     while (1) {                         //main loop, never ends...
-       P1OUT ^= 1;
-       delay(0x4fff);
+//       P1OUT ^= 1;
+//       delay(0x4fff);
     }
 }
 

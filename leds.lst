@@ -210,7 +210,7 @@ SYMBOL TABLE:
 0000013a l       *ABS*	00000000 __RESLO
 0000013c l       *ABS*	00000000 __RESHI
 0000013e l       *ABS*	00000000 __SUMEXT
-000011ae l       .text	00000000 Letext
+000011a0 l       .text	00000000 Letext
 00000000 l    df *ABS*	00000000 interrupts.c
 00000130 l       *ABS*	00000000 __MPY
 00000132 l       *ABS*	00000000 __MPYS
@@ -220,65 +220,65 @@ SYMBOL TABLE:
 0000013a l       *ABS*	00000000 __RESLO
 0000013c l       *ABS*	00000000 __RESHI
 0000013e l       *ABS*	00000000 __SUMEXT
-00001242 l       .text	00000000 Letext
+00001238 l       .text	00000000 Letext
 00000000 l    df *ABS*	00000000 <command line>
 00000000 l    df *ABS*	00000000 <built-in>
-00001246 l       .text	00000000 __stop_progLoop
+0000123c l       .text	00000000 __stop_progLoop
 00001120  w      .text	00000000 _clear_bss_init__
 00000200 g     O .bss	00000002 last_tbr
-00001240 g     F .text	00000002 INT_nmi
-0000124a g       .text	00000000 _etext
-000011e6 g     F .text	00000002 INT_uart1rx
-00001242 g       .text	00000000 __stop_progExec__
+00001236 g     F .text	00000002 INT_nmi
+00001240 g       .text	00000000 _etext
+000011d8 g     F .text	00000002 INT_uart1rx
+00001238 g       .text	00000000 __stop_progExec__
 0000113a g       .text	00000000 _unexpected_1_
 0000113a  w      .text	00000000 vector_ffe0
-000011ec g     F .text	00000046 INT_timera0
-0000123e g     F .text	00000002 INT_timerb0
-000011ec g       .text	00000000 vector_ffec
-00001234 g       .text	00000000 vector_fff0
-000011e2 g     F .text	00000002 INT_port2
+000011de g     F .text	0000004a INT_timera0
+00001234 g     F .text	00000002 INT_timerb0
+000011de g       .text	00000000 vector_ffec
+0000122a g       .text	00000000 vector_fff0
+000011d4 g     F .text	00000002 INT_port2
 0000113a g       .text	00000000 __dtors_end
 00000202 g       .bss	00000000 __bss_end
-00001240 g       .text	00000000 vector_fffc
-00001232 g     F .text	00000002 INT_adc
-000011e4 g       .text	00000000 vector_ffe4
-000011e4 g     F .text	00000002 INT_uart1tx
-0000123a g     F .text	00000002 INT_compa
+00001236 g       .text	00000000 vector_fffc
+00001228 g     F .text	00000002 INT_adc
+000011d6 g       .text	00000000 vector_ffe4
+000011d6 g     F .text	00000002 INT_uart1tx
+00001230 g     F .text	00000002 INT_compa
 0000ffe0 g     O .vectors	00000020 InterruptVectors
-000011e8 g     F .text	00000002 INT_port1
+000011da g     F .text	00000002 INT_port1
 00001136  w      .text	00000000 _end_of_init__
-0000123c g     F .text	00000002 INT_timerb1
-00001236 g     F .text	00000002 INT_uart0rx
-000011e2 g       .text	00000000 vector_ffe2
-000011e8 g       .text	00000000 vector_ffe8
+00001232 g     F .text	00000002 INT_timerb1
+0000122c g     F .text	00000002 INT_uart0rx
+000011d4 g       .text	00000000 vector_ffe2
+000011da g       .text	00000000 vector_ffe8
 0000113e  w      .text	00000000 _unexpected_
-0000123e g       .text	00000000 vector_fffa
+00001234 g       .text	00000000 vector_fffa
 00001100 g       .text	00000000 _reset_vector__
 0000113a g       .text	00000000 __ctors_start
 0000116c g     F .text	00000008 InitOSC
 00000200 g       .bss	00000000 __bss_start
-00001232 g       .text	00000000 vector_ffee
-00001238 g       .text	00000000 vector_fff4
-00001174 g     F .text	0000003a main
-000011ae g     F .text	00000034 InitIRQ
-0000123c g       .text	00000000 vector_fff8
-00001236 g       .text	00000000 vector_fff2
+00001228 g       .text	00000000 vector_ffee
+0000122e g       .text	00000000 vector_fff4
+00001174 g     F .text	0000002c main
+000011a0 g     F .text	00000034 InitIRQ
+00001232 g       .text	00000000 vector_fff8
+0000122c g       .text	00000000 vector_fff2
 00010000 g       .vectors	00000000 _vectors_end
-000011e6 g       .text	00000000 vector_ffe6
+000011d8 g       .text	00000000 vector_ffe6
 00001140 g     F .text	00000012 delay
-000011ea g     F .text	00000002 INT_timera1
+000011dc g     F .text	00000002 INT_timera1
 00001152 g     F .text	0000001a InitPorts
 0000113a g       .text	00000000 __dtors_start
 0000113a g       .text	00000000 __ctors_end
 00000a00 g       *ABS*	00000000 __stack
-00001238 g     F .text	00000002 INT_wdt
+0000122e g     F .text	00000002 INT_wdt
 00000200 g       .data	00000000 _edata
 00000202 g       .noinit	00000000 _end
-0000123a g       .text	00000000 vector_fff6
+00001230 g       .text	00000000 vector_fff6
 00001106  w      .text	00000000 _copy_data_init__
-00001234 g     F .text	00000002 INT_uart0tx
+0000122a g     F .text	00000002 INT_uart0tx
 00000200 g       .data	00000000 __data_start
-000011ea g       .text	00000000 vector_ffea
+000011dc g       .text	00000000 vector_ffea
 
 
 Disassembly of section .text:
@@ -288,7 +288,7 @@ Disassembly of section .text:
     1104:	20 01 
 
 00001106 <_copy_data_init__>:
-    1106:	3f 40 4a 12 	mov	#4682,	r15	;#0x124a
+    1106:	3f 40 40 12 	mov	#4672,	r15	;#0x1240
     110a:	3e 40 00 02 	mov	#512,	r14	;#0x0200
     110e:	3d 40 00 02 	mov	#512,	r13	;#0x0200
     1112:	0d 9e       	cmp	r14,	r13	;
@@ -392,7 +392,7 @@ int main(void) {
   InitOSC();
     1182:	b0 12 6c 11 	call	#4460		;#0x116c
   InitIRQ();
-    1186:	b0 12 ae 11 	call	#4526		;#0x11ae
+    1186:	b0 12 a0 11 	call	#4512		;#0x11a0
     
     
     /* Initialize the interrupts */
@@ -404,218 +404,218 @@ int main(void) {
     1192:	c2 43 25 00 	mov.b	#0,	&0x0025	;r3 As==00
     P2IE   = P2IE_INIT;
     1196:	c2 43 2d 00 	mov.b	#0,	&0x002d	;r3 As==00
-    119a:	3b 40 40 11 	mov	#4416,	r11	;#0x1140
 
     while (1) {                         //main loop, never ends...
-       P1OUT ^= 1;
-    119e:	d2 e3 21 00 	xor.b	#1,	&0x0021	;r3 As==01
-       delay(0x4fff);
-    11a2:	3f 40 ff 4f 	mov	#20479,	r15	;#0x4fff
-    11a6:	8b 12       	call	r11		;
-    11a8:	fa 3f       	jmp	$-10     	;abs 0x119e
+    119a:	ff 3f       	jmp	$+0      	;abs 0x119a
+//       P1OUT ^= 1;
+//       delay(0x4fff);
     }
 }
-    11aa:	30 40 42 12 	br	#0x1242		;
+    119c:	30 40 38 12 	br	#0x1238		;
 
-000011ae <InitIRQ>:
+000011a0 <InitIRQ>:
 
 void InitIRQ( void )
 {
   /* Setup Timer A0 run off ACLK /1, continuous up count, start */
   TACTL = TASSEL_ACLK | TACLR;  
-    11ae:	b2 40 04 01 	mov	#260,	&0x0160	;#0x0104
-    11b2:	60 01 
+    11a0:	b2 40 04 01 	mov	#260,	&0x0160	;#0x0104
+    11a4:	60 01 
   TACTL |= MC_CONT;
-    11b4:	b2 d0 20 00 	bis	#32,	&0x0160	;#0x0020
-    11b8:	60 01 
+    11a6:	b2 d0 20 00 	bis	#32,	&0x0160	;#0x0020
+    11aa:	60 01 
   
   /* Setup Timer B0 to run off MCLK (DCO) /4 */
   TBCTL = TBSSEL_SMCLK | TBCLR | ID_DIV4;
-    11ba:	b2 40 84 02 	mov	#644,	&0x0180	;#0x0284
-    11be:	80 01 
+    11ac:	b2 40 84 02 	mov	#644,	&0x0180	;#0x0284
+    11b0:	80 01 
   TBCTL |= MC_CONT;
-    11c0:	b2 d0 20 00 	bis	#32,	&0x0180	;#0x0020
-    11c4:	80 01 
+    11b2:	b2 d0 20 00 	bis	#32,	&0x0180	;#0x0020
+    11b6:	80 01 
     
   /* Setup an interrupt on TA0 for 125mS (4096 count) */
   last_tbr = TBR;
-    11c6:	92 42 90 01 	mov	&0x0190,&0x0200	;0x0190
-    11ca:	00 02 
+    11b8:	92 42 90 01 	mov	&0x0190,&0x0200	;0x0190
+    11bc:	00 02 
   CCR0 = TAR + T125_MS;
-    11cc:	1f 42 70 01 	mov	&0x0170,r15	;0x0170
-    11d0:	3f 50 00 10 	add	#4096,	r15	;#0x1000
-    11d4:	82 4f 72 01 	mov	r15,	&0x0172	;
+    11be:	1f 42 70 01 	mov	&0x0170,r15	;0x0170
+    11c2:	3f 50 00 10 	add	#4096,	r15	;#0x1000
+    11c6:	82 4f 72 01 	mov	r15,	&0x0172	;
   CCTL0 = CCIE;  
-    11d8:	b2 40 10 00 	mov	#16,	&0x0162	;#0x0010
-    11dc:	62 01 
+    11ca:	b2 40 10 00 	mov	#16,	&0x0162	;#0x0010
+    11ce:	62 01 
 
   /* Enable Interrupts */
   _EINT();
-    11de:	32 d2       	eint			
+    11d0:	32 d2       	eint			
 }
-    11e0:	30 41       	ret			
+    11d2:	30 41       	ret			
 
-000011e2 <INT_port2>:
+000011d4 <INT_port2>:
 
 
 
 
 interrupt (PORT2_VECTOR) INT_port2( void )
 {
-    11e2:	00 13       	reti			
+    11d4:	00 13       	reti			
 
-000011e4 <INT_uart1tx>:
+000011d6 <INT_uart1tx>:
 }
 
 interrupt (UART1TX_VECTOR) INT_uart1tx( void )
 {
-    11e4:	00 13       	reti			
+    11d6:	00 13       	reti			
 
-000011e6 <INT_uart1rx>:
+000011d8 <INT_uart1rx>:
 }
 
 interrupt (UART1RX_VECTOR) INT_uart1rx( void )
 {
-    11e6:	00 13       	reti			
+    11d8:	00 13       	reti			
 
-000011e8 <INT_port1>:
+000011da <INT_port1>:
 }
 
 interrupt (PORT1_VECTOR) INT_port1( void )
 {
-    11e8:	00 13       	reti			
+    11da:	00 13       	reti			
 
-000011ea <INT_timera1>:
+000011dc <INT_timera1>:
 } 
 
 interrupt (TIMERA1_VECTOR) INT_timera1( void )
 {
-    11ea:	00 13       	reti			
+    11dc:	00 13       	reti			
 
-000011ec <INT_timera0>:
+000011de <INT_timera0>:
 }
 
 interrupt (TIMERA0_VECTOR) INT_timera0( void )
 {
-    11ec:	0f 12       	push	r15		;
+    11de:	0f 12       	push	r15		;
   unsigned short t;
   
   /* Stop Timer B */
   TBCTL = TBSSEL_SMCLK | ID_DIV4;
-    11ee:	b2 40 80 02 	mov	#640,	&0x0180	;#0x0280
-    11f2:	80 01 
+    11e0:	b2 40 80 02 	mov	#640,	&0x0180	;#0x0280
+    11e4:	80 01 
   
   t = TBR;
-    11f4:	1f 42 90 01 	mov	&0x0190,r15	;0x0190
+    11e6:	1f 42 90 01 	mov	&0x0190,r15	;0x0190
   CCR0 += T125_MS;
-    11f8:	b2 50 00 10 	add	#4096,	&0x0172	;#0x1000
-    11fc:	72 01 
+    11ea:	b2 50 00 10 	add	#4096,	&0x0172	;#0x1000
+    11ee:	72 01 
 
   /* Figure out how fast the DCO is running */
   if( t < MIN_DCO_TIME )
-    11fe:	3f 90 f7 73 	cmp	#29687,	r15	;#0x73f7
-    1202:	06 2c       	jc	$+14     	;abs 0x1210
+    11f0:	3f 90 f7 73 	cmp	#29687,	r15	;#0x73f7
+    11f4:	06 2c       	jc	$+14     	;abs 0x1202
   {
     /* The DCO is running too slow */
     if( DCOCTL < 0xFF )
-    1204:	f2 93 56 00 	cmp.b	#-1,	&0x0056	;r3 As==11
-    1208:	0d 24       	jz	$+28     	;abs 0x1224
+    11f6:	f2 93 56 00 	cmp.b	#-1,	&0x0056	;r3 As==11
+    11fa:	0d 24       	jz	$+28     	;abs 0x1216
     {
       DCOCTL += 1;
-    120a:	d2 53 56 00 	inc.b	&0x0056		;
-    120e:	0a 3c       	jmp	$+22     	;abs 0x1224
+    11fc:	d2 53 56 00 	inc.b	&0x0056		;
+    1200:	0a 3c       	jmp	$+22     	;abs 0x1216
     }
   } else if( t > MAX_DCO_TIME ) {
-    1210:	3f 90 2d 80 	cmp	#-32723,r15	;#0x802d
-    1214:	06 28       	jnc	$+14     	;abs 0x1222
+    1202:	3f 90 2d 80 	cmp	#-32723,r15	;#0x802d
+    1206:	06 28       	jnc	$+14     	;abs 0x1214
     /* The DCO is running too fast */
     if( DCOCTL > 0 )
-    1216:	c2 93 56 00 	cmp.b	#0,	&0x0056	;r3 As==00
-    121a:	04 24       	jz	$+10     	;abs 0x1224
+    1208:	c2 93 56 00 	cmp.b	#0,	&0x0056	;r3 As==00
+    120c:	04 24       	jz	$+10     	;abs 0x1216
     {
       DCOCTL -= 1;
-    121c:	f2 53 56 00 	add.b	#-1,	&0x0056	;r3 As==11
-    1220:	01 3c       	jmp	$+4      	;abs 0x1224
+    120e:	f2 53 56 00 	add.b	#-1,	&0x0056	;r3 As==11
+    1212:	01 3c       	jmp	$+4      	;abs 0x1216
     }
   } else {
     asm("  nop");
-    1222:	03 43       	nop			
+    1214:	03 43       	nop			
   }
 
   /* Clear and restart Timer B */
   TBCTL |= TBCLR;
-    1224:	a2 d2 80 01 	bis	#4,	&0x0180	;r2 As==10
+    1216:	a2 d2 80 01 	bis	#4,	&0x0180	;r2 As==10
   TBCTL |= MC_CONT;
-    1228:	b2 d0 20 00 	bis	#32,	&0x0180	;#0x0020
-    122c:	80 01 
-}
-    122e:	3f 41       	pop	r15		;
-    1230:	00 13       	reti			
+    121a:	b2 d0 20 00 	bis	#32,	&0x0180	;#0x0020
+    121e:	80 01 
 
-00001232 <INT_adc>:
+  /* Diagnostic */
+  P1OUT ^= 1;
+    1220:	d2 e3 21 00 	xor.b	#1,	&0x0021	;r3 As==01
+}
+    1224:	3f 41       	pop	r15		;
+    1226:	00 13       	reti			
+
+00001228 <INT_adc>:
 
 interrupt (ADC_VECTOR) INT_adc( void )
 {
-    1232:	00 13       	reti			
+    1228:	00 13       	reti			
 
-00001234 <INT_uart0tx>:
+0000122a <INT_uart0tx>:
 }
 
 interrupt (UART0TX_VECTOR) INT_uart0tx( void )
 {
-    1234:	00 13       	reti			
+    122a:	00 13       	reti			
 
-00001236 <INT_uart0rx>:
+0000122c <INT_uart0rx>:
 }
 
 interrupt (UART0RX_VECTOR) INT_uart0rx( void )
 {
-    1236:	00 13       	reti			
+    122c:	00 13       	reti			
 
-00001238 <INT_wdt>:
+0000122e <INT_wdt>:
 }
 
 interrupt (WDT_VECTOR) INT_wdt( void )
 {
-    1238:	00 13       	reti			
+    122e:	00 13       	reti			
 
-0000123a <INT_compa>:
+00001230 <INT_compa>:
 }
 
 interrupt (COMPARATORA_VECTOR) INT_compa( void )
 {
-    123a:	00 13       	reti			
+    1230:	00 13       	reti			
 
-0000123c <INT_timerb1>:
+00001232 <INT_timerb1>:
 }
 
 interrupt (TIMERB1_VECTOR) INT_timerb1( void )
 {
-    123c:	00 13       	reti			
+    1232:	00 13       	reti			
 
-0000123e <INT_timerb0>:
+00001234 <INT_timerb0>:
 }
 
 interrupt (TIMERB0_VECTOR) INT_timerb0( void )
 {
-    123e:	00 13       	reti			
+    1234:	00 13       	reti			
 
-00001240 <INT_nmi>:
+00001236 <INT_nmi>:
 }
 
 interrupt (NMI_VECTOR) INT_nmi( void )
 {
-    1240:	00 13       	reti			
+    1236:	00 13       	reti			
 
-00001242 <__stop_progExec__>:
-    1242:	0f 12       	push	r15		;
-    1244:	3f 41       	pop	r15		;
+00001238 <__stop_progExec__>:
+    1238:	0f 12       	push	r15		;
+    123a:	3f 41       	pop	r15		;
 
-00001246 <__stop_progLoop>:
-    1246:	02 df       	bis	r15,	r2	;
-    1248:	fe 3f       	jmp	$-2      	;abs 0x1246
+0000123c <__stop_progLoop>:
+    123c:	02 df       	bis	r15,	r2	;
+    123e:	fe 3f       	jmp	$-2      	;abs 0x123c
 Disassembly of section .vectors:
 
 0000ffe0 <InterruptVectors>:
-    ffe0:	3a 11 e2 11 e4 11 e6 11 e8 11 ea 11 ec 11 32 12     :.............2.
-    fff0:	34 12 36 12 38 12 3a 12 3c 12 3e 12 40 12 00 11     4.6.8.:.<.>.@...
+    ffe0:	3a 11 d4 11 d6 11 d8 11 da 11 dc 11 de 11 28 12     :.............(.
+    fff0:	2a 12 2c 12 2e 12 30 12 32 12 34 12 36 12 00 11     *.,...0.2.4.6...
