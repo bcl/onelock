@@ -1,13 +1,11 @@
 
+1. serial uart for setting up the access list
+   Need a 3.3v MAX3221
 
-How to tune the DCO using a 32767Hz watch crystal on XT.
+2. sleep mode most of the time
+   Wakeup and read rom from sleep mode
 
-It basically amount to running an interrupt off the watch crystal to go off
-every 100mS
+3. timing on lock motor control
 
-Run timer a0 off the DCO clock (as well as the system). When the 100mS
-interrupt goes off grab the timera0 counter value. Take the difference from
-the previous. This will tell you how fast or slow the DCO is running. Change
-the DCO to speed it up or slow it down if it is outside the desired
-operating range.
+4. PCB layout and order
 
