@@ -100,6 +100,9 @@ int main(void)
     InitDCO();
     InitIRQ();
 
+    /* Turn on power to 1-wire pullup */
+    P1OUT |= 0x04;
+
     P1OUT &= ~0x01;
     adj_timer = DCO_ADJ_TIME;
     while (1) {                         //main loop, never ends...
@@ -134,17 +137,20 @@ int main(void)
  
             if( sn[0] == 0x21 )
             {
+              /* Turn on the LED */
               P1OUT |= 0x01;
-            }
  
-            /* Check checksum */
- 
-            /* Check against the access list */
+              /* Check checksum */
+   
+              /* Check against the access list */
+                
+              /* Unlock the lock */
+              P1OUT |= 0x08;
+              delay( 0x4000 );
+              P1OUT &= ~0x08;
               
-            /* Unlock the lock */
-            
-            
-            success = 1;
+              success = 1;
+            }
           } /* presence */
         } /* for loop */
       }
