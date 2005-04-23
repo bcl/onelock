@@ -18,7 +18,7 @@ void ow_delay( unsigned int d )
 {
   unsigned int i;
 
-  for( i=0; i<d; i++ )
+  while( d-- )
   {
     asm("  nop");
   }

@@ -16,17 +16,16 @@
 #include "hardware.h"
 #include "interrupts.h"
 #include "dco.h"
+#include "onewire.h"
 
 
-extern volatile short Status;
+extern volatile char Status;
 volatile unsigned int VZC_2delta;
 unsigned int VZC_LastCap;
 
 
 void InitIRQ( void )
 {
-  short i;
-  
   /* Setup Timer A0 run off MCLK /1, continuous up count, start */
   TACTL = TASSEL_SMCLK | TACLR;
   TACTL |= MC_CONT;
@@ -35,10 +34,8 @@ void InitIRQ( void )
   CCTL2 = CM_POS|CCIS_1|SCS|CAP|OUTMOD_SET;
 
   /* Delay a bit for ACLK to settle */
-  for (i = 0; i<0x1000; i++)
-  {
-    nop();
-  }
+  ow_delay( 0x1000 );
+  
   /* Enable CCTL2 interrupt */
   CCTL2 |= CCIE;
 
@@ -76,7 +73,7 @@ interrupt (TIMERA1_VECTOR) INT_timera1( void )
     /* Measure the 32.768KHz period */
     VZC_2delta = CCR2 - VZC_LastCap;
     VZC_LastCap = CCR2;
-    Status |= TASK_OVR;
+    Status = TASK_OVR;
   }
 }
 

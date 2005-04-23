@@ -10,5 +10,6 @@
 /* Prototypes */
 int ow_reset( void );
 void ow_read_rom( unsigned char *sn );
+void ow_delay( unsigned int d );
 
 #endif  // ONEWIRE_H
