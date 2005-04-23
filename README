@@ -17,6 +17,8 @@
 04/18/2005
 
 1. rewrite in assembly. Needs to fit into 1k of a F1101!
+   'c' version certainly doesn't fit.
+
 
 2. Write to flash code for storing authorized serial numbers
 
