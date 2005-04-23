@@ -1,11 +1,26 @@
 
 1. serial uart for setting up the access list
    Need a 3.3v MAX3221
+   On PCB
 
 2. sleep mode most of the time
    Wakeup and read rom from sleep mode
 
 3. timing on lock motor control
+   DONE
 
 4. PCB layout and order
+   DONE
+
+
+
+04/18/2005
+
+1. rewrite in assembly. Needs to fit into 1k of a F1101!
+
+2. Write to flash code for storing authorized serial numbers
+
+3. PC interface for management
+
+4. pyGTK code for management
 

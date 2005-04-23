@@ -3,6 +3,9 @@
    Copyright 2005 by Brian C. Lane
    All Rights Reserved
    ==========================[ HISTORY ]==================================
+   04/23/2005   Moving over to new hardware, F1101
+   bcl
+
    04/02/2005   Getting DCO adjustment working today. done.
    bcl          Adding 1-wire on P1.1
 
@@ -11,7 +14,22 @@
    
                 First task is to see if I can tune the DCO with the 
                 32767Hz watch crystal so I can do 1-wire operation.
+
+   ===========================[ PIN MAP ]=================================
+   P1.0   LED
+   P1.1   1-Wire data
+   P1.2   1-Wire pullup power
+   P1.3   Motor control
+   P1.4   JTAG
+   P1.5   JTAG
+   P1.6   JTAG
+   P1.7   JTAG
    
+   P2.0   MAX3221 ForceOff
+   P2.1   N/C
+   P2.2   RS232 input? (From PC)
+   P2.3   RS232 output? (To PC)
+   P2.4   N/C
    
    ----------------------------------------------------------------------- */
 #include "hardware.h"
@@ -67,15 +85,6 @@ void InitDCO( void )
     
     /* Setup for ACLK/8 */
     BCSCTL1 |= DIVA_DIV8;
-
-    /* Diagnostic */
-    /* Output SMCLK on P1.4 pin 16 f149 */
-    P1SEL |= 0x10;
-    P1DIR |= 0x10;
-    
-    /* Output ACLK on P2.0 pin 20 f149 */
-    P2SEL |= 0x01;
-    P2DIR |= 0x01;
 }
 
 
@@ -100,9 +109,10 @@ int main(void)
     InitDCO();
     InitIRQ();
 
-    /* Turn on power to 1-wire pullup */
+    /* Turn on power to 1-wire pullup on P1.2 */
     P1OUT |= 0x04;
 
+    /* Turn off the LED on P1.0 */
     P1OUT &= ~0x01;
     adj_timer = DCO_ADJ_TIME;
     while (1) {                         //main loop, never ends...
@@ -112,39 +122,47 @@ int main(void)
         {
           dco_step();
           adj_timer = DCO_ADJ_TIME;
+
+          /* Turn off the LED */
           P1OUT &= ~0x01;
         }
         Status &= ~TASK_OVR; 
       }
 
+      /* Poll the 1-wire on P1.1 (should be an interrupt) */
       if( !(P1IN & 0x02) )
       {
         success = 0;
+
+        /* Erase the serial number  */
         for(i=0;i<8;i++)
         {
           sn[i] = 0;
         }
+
+        /* Delay a little to let the line settle */
+        delay( 500 );
+
+        /* Try up to 5 times */
         for(i=0;(i<5) && !success;i++)
         {
+          /* Check to see if there is a device present */
           if( ow_reset() )
           {
-            /* Turn on the LED */
-//            P1OUT |= 0x01;
-              
             /* Go Read the 1-wire serial number */
             ow_read_rom( sn );
  
- 
+            /* If it is a thermochron, turn on the LED and motor */ 
             if( sn[0] == 0x21 )
             {
-              /* Turn on the LED */
+              /* Turn on the LED on P1.0 */
               P1OUT |= 0x01;
  
               /* Check checksum */
    
               /* Check against the access list */
                 
-              /* Unlock the lock */
+              /* Unlock the lock on P1.3 */
               P1OUT |= 0x08;
               delay( 0x4000 );
               P1OUT &= ~0x08;

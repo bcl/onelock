@@ -1,13 +1,13 @@
 # makfile configuration
 
 # REMINDER: msp430-gdbproxy --debug --port=2000 msp430
-# REMINDER: msp430-gdb leds.elf
+# REMINDER: msp430-gdb onelock.elf
 
-NAME            = leds
+NAME            = onelock
 OBJECTS         = main.o interrupts.o dco.o onewire.o
-CPU             = msp430x149
+CPU             = msp430x1101
 
-CFLAGS          = -mmcu=${CPU} -O2 -Wall -g
+CFLAGS          = -mmcu=${CPU} -O3 -Wall # -g
 
 #switch the compiler (for the internal make rules)
 CC              = msp430-gcc
