@@ -123,7 +123,7 @@ unsigned char ow_read()
     P1DIR &= ~0x02;			/* Let pullup pull	*/      
   
     /* Delay for 20uS before sampling */
-    ow_delay( 0 );
+    ow_delay( 1 );
     
     d = d >> 1;
     if( P1IN & 0x02 )

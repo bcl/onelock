@@ -109,6 +109,7 @@ int main(void)
         Status = 0; 
       }
 
+
       /* Poll the 1-wire on P1.1 (should be an interrupt) */
       if( !(P1IN & 0x02) )
       {
@@ -121,8 +122,8 @@ int main(void)
 //        }
         sn[0] = 0;
 
-        /* Delay a little to let the line settle */
-        ow_delay( 1000 );
+        /* Delay about 10mS to let the line settle */
+        ow_delay( 2000 );
 
         /* Try up to 5 times */
         for(i=0;(i<5) && !success;i++)

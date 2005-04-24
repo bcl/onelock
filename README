@@ -20,11 +20,14 @@
    'c' version certainly doesn't fit.
    Except that if I rewrite in ASM I don't think I have any way to debug it.
    Try to optimize what I have right now.
-
+   It fits (0xFF3C end right now), need to see if it works.
 
 2. Write to flash code for storing authorized serial numbers
+   I don't think that's going to fit in the 'c' version
 
 3. PC interface for management
+   ditto
 
 4. pyGTK code for management
+   ditto
 
