@@ -1,8 +1,17 @@
 /* -----------------------------------------------------------------------
    1-wire Lock
-   Copyright 2005 by Brian C. Lane
+   Copyright 2005 by Brian C. Lane <bcl@brianlane.com>
    All Rights Reserved
+
+   The right to use this code for educational or non-commercial use is
+   granted. Commercial users need to contact the author first.
+
    ==========================[ HISTORY ]==================================
+   05/05/2005   Releasing this code to the public. Please note that it is
+   bcl          not complete. It only checks for a family code of '21'
+                used by Thermochron iButtons. The serial code has not
+                been written, but the DCO clock tuneing routine does work.
+
    04/23/2005   Moving over to new hardware, F1101
    bcl          Trying to optimize the 'c' code first, debugging ASM is
                 going to be a bear with gdb.

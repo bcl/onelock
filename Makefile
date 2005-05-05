@@ -38,11 +38,11 @@ download-bsl: all
 	msp430-bsl -e ${NAME}.elf
 
 clean:
-	rm -f ${NAME} ${NAME}.a43 ${NAME}.lst *.o
+	rm -f ${NAME} ${NAME}.a43 ${NAME}.lst *.o *~
 
 #backup archive
 dist:
-	tar czf dist.tgz *.c *.h *.txt makefile
+	tar czf dist.tgz *.c *.h *.txt Makefile
 
 #dummy target as dependecy if something has to be build everytime
 FORCE:

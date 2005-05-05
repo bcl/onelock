@@ -1,5 +1,11 @@
 /* -----------------------------------------------------------------------
    DCO Functions
+   Copyright 2005 by Brian C. Lane <bcl@brianlane.com>
+   All Rights Reserved
+   
+   
+   The right to use this code for educational or non-commercial use is
+   granted. Commercial users need to contact the author first.
    ----------------------------------------------------------------------- */
 #include "hardware.h"
 #include "dco.h"

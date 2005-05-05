@@ -1,8 +1,11 @@
 /* -----------------------------------------------------------------------
    1-wire Lock
    Interrupt handler code
-   Copyright 2005 by Brian C. Lane
+   Copyright 2005 by Brian C. Lane <bcl@brianlane.com>
    All Rights Reserved   
+   
+   The right to use this code for educational or non-commercial use is
+   granted. Commercial users need to contact the author first.
    ==========================[ HISTORY ]==================================
    04/02/2005   Changing to use the DCO adjustment method from slaa074.pdf
    bcl          Run Timer A from the DCO
@@ -10,8 +13,6 @@
 
    03/20/2005   Define default interrupt vectors for the F149
    bcl          
-   
-   
    ----------------------------------------------------------------------- */
 #include "hardware.h"
 #include "interrupts.h"

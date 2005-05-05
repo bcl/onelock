@@ -1,0 +1,13 @@
+The Gerber files were generated using the standard Eagle CAD scripts and
+instructions from http://www.apcircuits.com/resources/links/eagle.html
+
+You can view the gerber files using the gerbv program, note that you have to
+pass the names of the layers to view on the command line and it will not
+mirror the bottom layer so it will appear backwards if combined with the top
+layer and silkscreen.
+
+You can also take a look at my Linux Fest Northwest presentation based on
+this project:
+
+http://www.brianlane.com/articles/msp430_linux/
+
