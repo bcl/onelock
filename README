@@ -1,33 +1,12 @@
-
-1. serial uart for setting up the access list
-   Need a 3.3v MAX3221
-   On PCB
-
-2. sleep mode most of the time
-   Wakeup and read rom from sleep mode
-
-3. timing on lock motor control
-   DONE
-
-4. PCB layout and order
-   DONE
+1-Wire Lock Project
+Copyright 2005 by Brian C. Lane <bcl@brianlane.com>
+All Rights Reserved
 
 
 
-04/18/2005
+This project uses a custom PC Board to implement a simple 1-Wire based lock.
+It runs off of a 32768Hz watch crystal to tune the internal DCO of the
+MSP430F1101 processor to about 1MHz.
 
-1. rewrite in assembly. Needs to fit into 1k of a F1101!
-   'c' version certainly doesn't fit.
-   Except that if I rewrite in ASM I don't think I have any way to debug it.
-   Try to optimize what I have right now.
-   It fits (0xFF3C end right now), need to see if it works.
-
-2. Write to flash code for storing authorized serial numbers
-   I don't think that's going to fit in the 'c' version
-
-3. PC interface for management
-   ditto
-
-4. pyGTK code for management
-   ditto
+etc.
 
