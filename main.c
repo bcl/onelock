@@ -7,6 +7,16 @@
    granted. Commercial users need to contact the author first.
 
    ==========================[ HISTORY ]==================================
+   09/05/2005   Time to finish this up and get an article published.
+   bcl          1. Need to write serial number to flash
+                2. Button to clear flash
+                3. It sometimes fails to read the ID. Needs to work 100%
+                   It is missing the presence pulse sometimes. Need to 
+                   connect it to an interrupt.
+                   Added more delay before trying to get serial number, this
+                   seems to have improved things.
+                
+
    05/05/2005   Releasing this code to the public. Please note that it is
    bcl          not complete. It only checks for a family code of '21'
                 used by Thermochron iButtons. The serial code has not
@@ -51,7 +61,7 @@
 short Rsel;			    /* DCO Resistor Selection 		*/
 volatile unsigned char Status;	    /* Status flags			*/
 volatile unsigned int VZC_2delta;   /* DCO count over ACLK/8            */
-
+volatile char presence;             /* Presence pulse interrupt         */
 
 
 
@@ -80,6 +90,9 @@ int main(void)
     P1DIR  = P1DIR_INIT;                //Init port direction register of port1
     P2DIR  = P2DIR_INIT;                //Init port direction register of port2
 
+    /* Turn on the LED on P1.0 */
+    P1OUT |= 0x01;
+
     /* Initialize the Oscillator */
     /* Clear OSC Fault */
     IE1 = 0x00;
@@ -104,6 +117,8 @@ int main(void)
     /* Turn off the LED on P1.0 */
     P1OUT &= ~0x01;
     adj_timer = DCO_ADJ_TIME;
+    presence = 0;
+    p1ie_on();
     while (1) {                         //main loop, never ends...
       if( Status )
       {
@@ -120,9 +135,14 @@ int main(void)
 
 
       /* Poll the 1-wire on P1.1 (should be an interrupt) */
-      if( !(P1IN & 0x02) )
+//      if( !(P1IN & 0x02) )
+      if( presence )
       {
         success = 0;
+        p1ie_off();
+
+        /* Diagnostic, is it getting the presence pulse? */
+//        P1OUT |= 0x01;
 
         /* Erase the serial number  */
 //        for(i=0;i<8;i++)
@@ -132,7 +152,7 @@ int main(void)
         sn[0] = 0;
 
         /* Delay about 10mS to let the line settle */
-        ow_delay( 2000 );
+        ow_delay( 20000 );
 
         /* Try up to 5 times */
         for(i=0;(i<5) && !success;i++)
@@ -154,15 +174,19 @@ int main(void)
               /* Check against the access list */
                 
               /* Unlock the lock on P1.3 */
-              P1OUT |= 0x08;
+//              P1OUT |= 0x08;
               ow_delay( 0x6000 );
-              P1OUT &= ~0x08;
+//              P1OUT &= ~0x08;
               
               success = 1;
             }
           } /* presence */
         } /* for loop */
+        presence = 0;
+        p1ie_on();
       }
+
+      LPM0;
     }
 }
 

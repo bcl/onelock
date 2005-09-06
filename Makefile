@@ -7,7 +7,7 @@ NAME            = onelock
 OBJECTS         = main.o interrupts.o dco.o onewire.o
 CPU             = msp430x1101
 
-CFLAGS          = -mmcu=${CPU} -O2 -Wall  -g
+CFLAGS          = -mmcu=${CPU} -Os -Wall  -g
 
 #switch the compiler (for the internal make rules)
 CC              = msp430-gcc

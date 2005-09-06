@@ -147,17 +147,17 @@ unsigned char ow_read()
    ----------------------------------------------------------------------- */
 void ow_read_rom( unsigned char *sn )
 {
-  unsigned int i;
+  unsigned char *p;
 
   if( ow_reset() == 1 )
   {
     /* Send the read ROM command */
     ow_write( 0x33 );
     
-    for(i=0;i<8;i++)
+    for(p=sn;p<sn+8;p++)
     {
       /* Read the serial number */
-      sn[i] = ow_read();
+      *p = ow_read();
     }
     
     ow_reset();
